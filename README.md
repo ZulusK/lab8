@@ -1,6 +1,6 @@
 # LAB 8 #
 ## HTTP сервер ##
-
+![Cat's server]( https://github.com/ZulusK/lab8/blob/master/res/cat.jpg "Cat's server")
 #### Goal:
 Learn how to create a simple web-server interaction from over HTTP. Learn to execute remote Git repository with the code, check the build project using continuous integration and code to create documentation project.
 
