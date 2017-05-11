@@ -1,6 +1,5 @@
 [![Travis-CI][travis-badge]][travis-builds]
-[travis-badge]: https://travis-ci.org/ZulusK/lab8.svg?branch=master
-[travis-builds]: https://travis-ci.org/ZulusK/lab8/builds
+
 # LAB8  HTTP server
 
 ![Cat's server]( https://github.com/ZulusK/lab8/blob/master/res/cat.jpg "Cat's server")
@@ -35,3 +34,6 @@ Create a TCP-server that listens TCP connection requests of customers and intera
 
 
 #### 3. Task №3. Continuous integration (Continuous Integration)
+
+[travis-badge]: https://travis-ci.org/ZulusK/lab8.svg?branch=master
+[travis-builds]: https://travis-ci.org/ZulusK/lab8/builds
