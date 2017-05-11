@@ -11,6 +11,7 @@ Server::Server(TcpListener *listener, IpAddress *address) {
     this->listener = listener;
     this->address = address;
     this->status = false;
+    this->serverThread = NULL;
 }
 
 Server *Server::create(int port) {
@@ -28,6 +29,8 @@ Server *Server::create(int port) {
 }
 
 Server::~Server() {
+    stop();
+    delete serverThread;
     delete listener;
     delete address;
 }
@@ -44,20 +47,46 @@ void Server::stop() {
     if (status) {
         status = false;
         this->serverThread->join();
+        if (serverThread) delete serverThread;
+        serverThread = NULL;
     }
+}
+
+void Server::acceptClient(TcpClient **client) {
+    *client = listener->accept();
 }
 
 void Server::exec() {
     NetMessage msg(2048);
     listener->start();
+    TcpClient *client = NULL;
+    thread *acceptingThread = new thread(&Server::acceptClient, this, &client);
     while (status) {
         cout << "wait for connection " << this->address->address() << ":" << this->address->port() << " ..." << endl;
-        TcpClient *client = listener->accept();
-        client->receive(msg);
-        cout << msg.dataAsString() << endl;
-        client->send(msg);
-//        this_thread::sleep_for(chrono::seconds(1));
+        if (!acceptingThread->joinable()) {
+            client->receive(msg);
+            cout << msg.dataAsString() << endl;
+            delete client;
+            delete acceptingThread;
+            client = NULL;
+            acceptingThread = new thread(&Server::acceptClient, this, &client);
+        }
+        this_thread::sleep_for(chrono::seconds(1));
     }
+    connectProxy();
+    acceptingThread->join();
+    delete acceptingThread;
+    if (client) {
+        delete client;
+    }
+}
+
+void Server::connectProxy() {
+    TcpClient client;
+    client.connect(*address);
+    NetMessage msg(10);
+    msg.setDataString("stop");
+    client.send(msg);
 }
 
 bool Server::isAlive() {

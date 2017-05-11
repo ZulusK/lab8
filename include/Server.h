@@ -18,6 +18,7 @@ class Server {
 
     void exec();
 
+    void acceptClient(TcpClient **client);
 
 public:
     static Server *create(int port);
@@ -33,6 +34,8 @@ public:
     int port();
 
     std::string ip();
+
+    void connectProxy();
 };
 
 
