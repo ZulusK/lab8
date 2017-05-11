@@ -20,7 +20,7 @@ class Server {
 
     void acceptClient(TcpClient **client);
 
-    void connectProxy();
+    void connectProxyClient();
 
 public:
     static Server *create(int port);
@@ -37,6 +37,11 @@ public:
 
     std::string ip();
 
+    void processClientRequest(TcpClient *client);
+
+    std::string getRequest(TcpClient *client);
+
+    void sendAnswer(TcpClient *client, const std::string &str);
 };
 
 

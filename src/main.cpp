@@ -10,11 +10,10 @@ int main(void) {
         server = Server::create(port++);
     }
     server->start();
-    string s="";
-    while(s.length()<3){
+    string s = "";
+    while (s.compare("stop") != 0) {
         cin >> s;
     }
-
     server->stop();
     delete server;
 }
