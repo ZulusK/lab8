@@ -12,15 +12,23 @@ class Server {
     TcpListener *listener;
     IpAddress *address;
     std::thread *serverThread;
+    bool status;
 
     Server(TcpListener *listener, IpAddress *address);
+
+    void exec();
+
 
 public:
     static Server *create(int port);
 
     bool start();
 
+    bool isAlive();
+
     ~Server();
+
+    void stop();
 
     int port();
 

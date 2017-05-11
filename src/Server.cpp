@@ -10,6 +10,7 @@ using namespace std;
 Server::Server(TcpListener *listener, IpAddress *address) {
     this->listener = listener;
     this->address = address;
+    this->status = false;
 }
 
 Server *Server::create(int port) {
@@ -39,10 +40,35 @@ string Server::ip() {
     return address->address();
 }
 
+void Server::stop() {
+    if (status) {
+        status = false;
+        this->serverThread->join();
+    }
+}
+
+void Server::exec() {
+    while (status) {
+        cout << "wait for connection " << this->address->address() << ":" << this->address->port() << " ..." << endl;
+        this_thread::sleep_for(chrono::seconds(1));
+    }
+}
+
+bool Server::isAlive() {
+    return status;
+}
+
 bool Server::start() {
-    try {
-        this->listener->start();
-    } catch (NetException e) {
-        cout << e.what() << endl;
+    if (!status) {
+        this->status = true;
+        try {
+            this->serverThread = new thread(&Server::exec, this);
+        } catch (NetException e) {
+            cout << e.what() << endl;
+            return false;
+        }
+        return true;
+    } else {
+        return false;
     }
 }

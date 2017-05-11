@@ -5,7 +5,9 @@ using namespace std;
 
 int main(void) {
     auto server = Server::create(4321);
-    cout << server->ip() << endl;
-    cout << server->port() << endl;
+    server->start();
+    string s;
+    cin >> s;
+    server->stop();
     delete server;
 }
