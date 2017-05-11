@@ -1,4 +1,5 @@
-# LAB8  HTTP server 
+[![Build Status](https://travis-ci.org/ZulusK/lab8.svg?branch=master)](https://travis-ci.org/ZulusK/lab8)
+# LAB8  HTTP server
 
 ![Cat's server]( https://github.com/ZulusK/lab8/blob/master/res/cat.jpg "Cat's server")
 
