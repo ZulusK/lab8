@@ -9,6 +9,7 @@ before_install:
   - sudo apt-get install libssl-dev
   - sudo apt-get install libjansson-dev
   - sh scripts/install-libprogbase.sh
+  - sh scripts/install-libprogbase-cpp.sh
 
 script:
   - cmake .
