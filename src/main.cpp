@@ -4,7 +4,7 @@
 using namespace std;
 
 int main(void) {
-    auto server = Server::create(4321);
+    Server * server = Server::create(4321);
     server->start();
     string s;
     cin >> s;
