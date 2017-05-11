@@ -11,6 +11,7 @@ using namespace progbase::net;
 class Server {
     TcpListener *listener;
     IpAddress *address;
+    std::thread *serverThread;
 
     Server(TcpListener *listener, IpAddress *address);
 
