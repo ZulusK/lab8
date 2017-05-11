@@ -1,5 +1,11 @@
 #include <iostream>
+#include <Server.h>
 
-int main(void){
-    std::cout<<"HELLO"<<std::endl;
+using namespace std;
+
+int main(void) {
+    auto server = Server::create(4321);
+    cout << server->ip() << endl;
+    cout << server->port() << endl;
+    delete server;
 }
