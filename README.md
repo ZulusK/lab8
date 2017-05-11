@@ -1,5 +1,4 @@
-# LAB 8 
-# HTTP server 
+# LAB8  HTTP server 
 
 ![Cat's server]( https://github.com/ZulusK/lab8/blob/master/res/cat.jpg "Cat's server")
 
