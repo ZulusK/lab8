@@ -6,3 +6,5 @@ file(GLOB LAB_SOURCES src/*.cpp)
 include_directories(include)
 project(lab8)
 add_executable(${CMAKE_PROJECT_NAME} ${LAB_SOURCES})
+# uncomment this to link jansson JSON library
+target_link_libraries(${CMAKE_PROJECT_NAME} jansson)
