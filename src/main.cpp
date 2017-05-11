@@ -4,7 +4,11 @@
 using namespace std;
 
 int main(void) {
-    Server * server = Server::create(4321);
+    int port = 4321;
+    Server *server = NULL;
+    while (!server) {
+        server = Server::create(port++);
+    }
     server->start();
     string s;
     cin >> s;

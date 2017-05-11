@@ -48,9 +48,15 @@ void Server::stop() {
 }
 
 void Server::exec() {
+    NetMessage msg(2048);
+    listener->start();
     while (status) {
         cout << "wait for connection " << this->address->address() << ":" << this->address->port() << " ..." << endl;
-        this_thread::sleep_for(chrono::seconds(1));
+        TcpClient *client = listener->accept();
+        client->receive(msg);
+        cout << msg.dataAsString() << endl;
+        client->send(msg);
+//        this_thread::sleep_for(chrono::seconds(1));
     }
 }
 
