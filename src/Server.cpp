@@ -8,17 +8,23 @@
 
 using namespace std;
 
-Server::Server(TcpListener *listener, IpAddress *address, const string &server, const string &developer) {
+Server::Server(TcpListener *listener, IpAddress *address, const string &server, const string &developer,
+               CounriesStorage *storage) {
     this->listener = listener;
     this->address = address;
     this->isAlive = false;
     this->developer = developer;
     this->serverName = server;
     this->serverThread = NULL;
+    this->storage = storage;
     srand(time(NULL));
 }
 
-Server *Server::create(int port, const std::string &serverName, const std::string &developer) {
+Server *Server::create(int port, const std::string &serverName, const std::string &developer, const string &filename) {
+    CounriesStorage *storage = CounriesStorage::load(filename);
+    if (storage == NULL) {
+        return NULL;
+    }
     auto address = new IpAddress("127.0.0.1", port);
     auto listener = new TcpListener();
     try {
@@ -29,7 +35,8 @@ Server *Server::create(int port, const std::string &serverName, const std::strin
         delete address;
         return NULL;
     }
-    return new Server(listener, address, serverName, developer);
+
+    return new Server(listener, address, serverName, developer, storage);
 }
 
 void Server::stop() {
@@ -267,7 +274,7 @@ string Server::getDate() {
     return buffer;
 }
 
-string Server::createHTTP(int errorCode) {
+string Server::createHTTPHeader(int errorCode) {
     auto http = "HTTP/1.1 " + to_string(errorCode) + " ";
     switch (errorCode) {
         case 400:
@@ -307,7 +314,6 @@ string Server::createHTTP(int errorCode) {
     }
     http += "\r\n";
     http += "Date: " + getDate() + "\r\n";
-    http += "Connection: Closed\r\n";
     return http;
 }
 
@@ -317,16 +323,16 @@ string Server::processPathReq(const string &path) {
             throw 400;
         }
         if (path.compare("/") == 0) {
-//            return createHTTP(getRoot());
+//            return createHTTPHeader(getRoot());
         }
         if (path.find("/favourites") == 0) {
-//            return createHTTP(getFavourites(path.substr(10)));
+//            return createHTTPHeader(getFavourites(path.substr(10)));
         }
         if (path.find("/file") == 0) {
-//            return createHTTP(getFile(path.substr(5)));
+//            return createHTTPHeader(getFile(path.substr(5)));
         }
         throw 404;
     } catch (int e) {
-        return createHTTP(e);
+        return createHTTPHeader(e);
     }
 }

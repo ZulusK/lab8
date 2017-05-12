@@ -6,6 +6,7 @@
 #include <thread>
 #include <mutex>
 #include <vector>
+#include <CounriesStorage.h>
 
 enum {
     SERVER_TIMEOUT = 10,
@@ -28,8 +29,10 @@ class Server {
     std::vector<Processor *> userReqProcessors;
     std::string serverName;
     std::string developer;
+    CounriesStorage *storage;
 
-    Server(TcpListener *listener, IpAddress *address, const std::string &server, const std::string &dev);
+    Server(TcpListener *listener, IpAddress *address, const std::string &server, const std::string &dev,
+           CounriesStorage *storage);
 
     void exec();
 
@@ -38,7 +41,8 @@ class Server {
     void connectProxyClient();
 
 public:
-    static Server *create(int port, const std::string &serverName, const std::string &developer);
+    static Server *
+    create(int port, const std::string &serverName, const std::string &developer, const std::string &filename);
 
     bool start();
 
@@ -72,7 +76,7 @@ public:
 
     std::string getDate();
 
-    std::string createHTTP(int errorCode);
+    std::string createHTTPHeader(int errorCode);
 };
 
 

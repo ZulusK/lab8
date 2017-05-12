@@ -18,7 +18,7 @@ class Country {
     json_t *jsn;
 public:
     Country(const std::string &name, const std::string &officialName, const std::string &abbr,
-            const std::string &citizen, int id);
+            const std::string &citizen, int id = 0);
 
     const std::string &getName() const;
 
@@ -40,13 +40,21 @@ public:
 
     void setId(int id);
 
-    Country *load(json_t *jobject);
+    static Country *load(json_t *jobject);
 
     json_t *json();
 };
 
 class CounriesStorage {
+private:
     std::vector<Country *> countries;
+
+    CounriesStorage();
+
+    void add(Country *country);
+
+public:
+    static CounriesStorage *load(const std::string &filename);
 };
 
 
