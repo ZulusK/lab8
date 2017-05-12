@@ -1,3 +1,0 @@
-/home/zulus/Projects/GitProj/lab8/bin/CMakeFiles/rebuild_cache.dir
-/home/zulus/Projects/GitProj/lab8/bin/CMakeFiles/edit_cache.dir
-/home/zulus/Projects/GitProj/lab8/bin/CMakeFiles/lab8.dir
