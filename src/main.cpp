@@ -22,14 +22,15 @@ int main(void) {
     Server *server = NULL;
     while (!server) {
         port++;
-        server = Server::create(port);
+        server = Server::create(port, "Lancelot", "Kazimirov Danil");
     }
     server->start();
-    this_thread::sleep_for(chrono::seconds(1));
-    for (int i = 0; i < 100; i++) {
-        auto T=new thread(connect, port);
-    }
-    this_thread::sleep_for(chrono::seconds(1));
+//    this_thread::sleep_for(chrono::seconds(1));
+//    for (int i = 0; i < 100; i++) {
+//        auto T=new thread(connect, port);
+//    }
+//    this_thread::sleep_for(chrono::seconds(1));
+    cin >> port;
     server->stop();
     delete server;
 }

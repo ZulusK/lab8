@@ -8,15 +8,17 @@
 
 using namespace std;
 
-Server::Server(TcpListener *listener, IpAddress *address) {
+Server::Server(TcpListener *listener, IpAddress *address, const string &server, const string &developer) {
     this->listener = listener;
     this->address = address;
     this->isAlive = false;
+    this->developer = developer;
+    this->serverName = server;
     this->serverThread = NULL;
     srand(time(NULL));
 }
 
-Server *Server::create(int port) {
+Server *Server::create(int port, const std::string &serverName, const std::string &developer) {
     auto address = new IpAddress("127.0.0.1", port);
     auto listener = new TcpListener();
     try {
@@ -27,7 +29,7 @@ Server *Server::create(int port) {
         delete address;
         return NULL;
     }
-    return new Server(listener, address);
+    return new Server(listener, address, serverName, developer);
 }
 
 void Server::stop() {
@@ -38,14 +40,6 @@ void Server::stop() {
         delete serverThread;
         this->serverThread = NULL;
     }
-}
-
-void Server::processClientRequest(Processor *processor) {
-    processor->alive.lock();
-    string userReq = getRequest(processor->client);
-    this_thread::sleep_for(chrono::seconds(rand() % 3));
-    sendAnswer(processor->client, userReq);
-    processor->alive.unlock();
 }
 
 void Server::processorsClean() {
@@ -98,7 +92,7 @@ void Server::cleaner(bool *status, int timeout) {
             }
             it = next;
         }
-        cout << "Clients processing: " << userReqProcessors.size() << endl;
+//        cout << "Clients processing: " << userReqProcessors.size() << endl;
         this_thread::sleep_for(chrono::milliseconds(timeout));
     }
 }
@@ -183,7 +177,6 @@ bool Server::start() {
 void Server::acceptClient(TcpClient **client, bool *connected) {
     *connected = false;
     *client = listener->accept();
-    cout << "Connection success ... " << endl;
     *connected = true;
 }
 
@@ -200,7 +193,7 @@ string Server::getRequest(TcpClient *client) {
 }
 
 void Server::sendAnswer(TcpClient *client, const string &str) {
-    NetMessage msg(1024);
+    NetMessage msg(2048);
     msg.setDataString(str);
     try {
         client->send(msg);
@@ -223,4 +216,114 @@ int Server::port() {
 
 string Server::ip() {
     return address->address();
+}
+
+bool isValidCharacter(char c) {
+    return isalnum(c) || c == '?' || c == '!' || c == '/' || c == '+' || c == '-' || c == '.';
+}
+
+string Server::getPathFromReq(const string &req) {
+    string path = "/";
+    int pos = req.find("GET") + 4;
+    int pathPos = req.find("/", pos);
+    int httpPos = req.find("HTTP/1.");
+    if (pos == -1 || pos > req.length() || httpPos == req.npos) {
+        return "";
+    }
+    if (pathPos == req.npos || pathPos < pos || pathPos > req.find("HTTP/1.")) {
+        return "";
+    }
+    int i;
+    for (i = pathPos + 1; i < httpPos; i++) {
+        if (!isValidCharacter(req[i])) {
+            break;
+        }
+    }
+    path = req.substr(pathPos, i - pathPos);
+    return path;
+}
+
+void Server::processClientRequest(Processor *processor) {
+    processor->alive.lock();
+    cout << "Connection success ... " << endl;
+    string userReq = getRequest(processor->client);
+    string path = getPathFromReq(userReq);
+    string answer = processPathReq(path);
+    cout << answer << endl;
+    sendAnswer(processor->client, answer);
+    cout << "Send answer ... " << endl;
+    processor->alive.unlock();
+}
+
+string Server::getDate() {
+    std::time_t rawtime;
+    std::tm *timeinfo;
+    char buffer[80];
+
+    std::time(&rawtime);
+    timeinfo = std::localtime(&rawtime);
+
+    std::strftime(buffer, 80, "%Y-%m-%d-%H-%M-%S", timeinfo);
+    return buffer;
+}
+
+string Server::createHTTP(int errorCode) {
+    auto http = "HTTP/1.1 " + to_string(errorCode) +" ";
+    switch (errorCode) {
+        case 400:
+            http += "Bad Request";
+            break;
+        case
+            401:
+            http += "Unauthorized";
+            break;
+        case 403:
+            http += "Forbidden";
+            break;
+        case 404:
+            http += "Not Found";
+            break;
+        case 410:
+            http += "Gone";
+            break;
+        case 413:
+            http += "Request Entity Too Large";
+            break;
+        case 414:
+            http += "Request-URI Too Large";
+            break;
+        case 415:
+            http += "Unsupported Media Type";
+            break;
+        case 416:
+            http += "Requested Range Not Satisfiable";
+            break;
+        case 417:
+            http += "Expectation Failed";
+            break;
+        case 423:
+            http += "Locked";
+            break;
+    }
+    http += "\r\n";
+    http += "Date: " + getDate() + "\r\n";
+    http += "Connection: Closed\r\n";
+    return http;
+}
+
+string Server::processPathReq(const string &path) {
+    if (path.length() == 0) {
+        return createHTTP(400);
+    }
+    else return createHTTP(404);
+//    if (path.compare("/") == 0) {
+//        return createHTTP(getRoot());
+//    }
+//    if (path.find("/favourites") == 0) {
+//        return createHTTP(getFavourites(path.substr(10)));
+//    }
+//    if (path.find("/file") == 0) {
+//        return createHTTP(getFile(path.substr(5)));
+//    }
+
 }
