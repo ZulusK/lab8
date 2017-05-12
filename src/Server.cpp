@@ -268,7 +268,7 @@ string Server::getDate() {
 }
 
 string Server::createHTTP(int errorCode) {
-    auto http = "HTTP/1.1 " + to_string(errorCode) +" ";
+    auto http = "HTTP/1.1 " + to_string(errorCode) + " ";
     switch (errorCode) {
         case 400:
             http += "Bad Request";
@@ -312,18 +312,21 @@ string Server::createHTTP(int errorCode) {
 }
 
 string Server::processPathReq(const string &path) {
-    if (path.length() == 0) {
-        return createHTTP(400);
+    try {
+        if (path.length() == 0) {
+            throw 400;
+        }
+        if (path.compare("/") == 0) {
+            return createHTTP(getRoot());
+        }
+        if (path.find("/favourites") == 0) {
+            return createHTTP(getFavourites(path.substr(10)));
+        }
+        if (path.find("/file") == 0) {
+            return createHTTP(getFile(path.substr(5)));
+        }
+        throw 404;
+    } catch (int e) {
+        return createHTTP(e);
     }
-    else return createHTTP(404);
-//    if (path.compare("/") == 0) {
-//        return createHTTP(getRoot());
-//    }
-//    if (path.find("/favourites") == 0) {
-//        return createHTTP(getFavourites(path.substr(10)));
-//    }
-//    if (path.find("/file") == 0) {
-//        return createHTTP(getFile(path.substr(5)));
-//    }
-
 }
