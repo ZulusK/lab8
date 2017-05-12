@@ -4,7 +4,7 @@ os:
   - linux
 compiler:
   - gcc
-  - g++
+  - clang
 before_install:
   - sudo apt-get install libssl-dev
   - sudo apt-get install libjansson-dev
