@@ -5,20 +5,29 @@
 #include <string>
 #include <thread>
 #include <mutex>
+#include <vector>
 
 using namespace progbase::net;
 
 class Server {
+    typedef struct {
+        std::thread *thread;
+        std::mutex alive;
+        TcpClient *client;
+    } Processor;
+
     TcpListener *listener;
     IpAddress *address;
     std::thread *serverThread;
-    bool status;
+    bool isAlive;
+    std::mutex processorsMutex;
+    std::vector<Processor *> userReqProcessors;
 
     Server(TcpListener *listener, IpAddress *address);
 
     void exec();
 
-    void acceptClient(TcpClient **client);
+    void acceptClient(TcpClient **client, bool *connected);
 
     void connectProxyClient();
 
@@ -27,7 +36,7 @@ public:
 
     bool start();
 
-    bool isAlive();
+    bool status();
 
     ~Server();
 
@@ -37,11 +46,17 @@ public:
 
     std::string ip();
 
-    void processClientRequest(TcpClient *client);
+    void processClientRequest(Processor *processor);
 
     std::string getRequest(TcpClient *client);
 
     void sendAnswer(TcpClient *client, const std::string &str);
+
+    void addClient(TcpClient *client);
+
+    void processorsClean();
+
+    void freeProcessor(Processor *p);
 };
 
 

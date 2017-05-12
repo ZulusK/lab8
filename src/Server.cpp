@@ -4,13 +4,14 @@
 
 #include <Server.h>
 #include <iostream>
+#include <vector>
 
 using namespace std;
 
 Server::Server(TcpListener *listener, IpAddress *address) {
     this->listener = listener;
     this->address = address;
-    this->status = false;
+    this->isAlive = false;
     this->serverThread = NULL;
 }
 
@@ -30,7 +31,8 @@ Server *Server::create(int port) {
 
 Server::~Server() {
     stop();
-    delete serverThread;
+    if (serverThread)
+        delete serverThread;
     delete listener;
     delete address;
 }
@@ -44,75 +46,95 @@ string Server::ip() {
 }
 
 void Server::stop() {
-    if (status) {
-        status = false;
+    if (isAlive) {
+        this->isAlive = false;
+        //connect client, to terminate thread
+        connectProxyClient();
+        cout << "try to stop" << endl;
         this->serverThread->join();
-        if (serverThread) delete serverThread;
-        serverThread = NULL;
+        delete serverThread;
+        this->serverThread = NULL;
     }
 }
 
-void Server::acceptClient(TcpClient **client) {
-    *client = listener->accept();
+void Server::processClientRequest(Processor *processor) {
+    processor->alive.lock();
+    string userReq = getRequest(processor->client);
+    this_thread::sleep_for(chrono::seconds(1));
+    sendAnswer(processor->client, userReq);
+    processor->alive.unlock();
 }
 
-string Server::getRequest(TcpClient *client) {
-    NetMessage message(1024);
-    string req = "";
-    try {
-        do {
-            client->receive(message);
-            req += message.dataAsString();
-        } while (!message.isEmpty());
-    } catch (NetException e) {
-        cout << e.what() << endl;
+void Server::processorsClean() {
+    cout << "start clean" << endl;
+    for (auto it = userReqProcessors.begin(); it != userReqProcessors.end();) {
+        auto next = it + 1;
+        Processor *p = *it;
+        processorsMutex.lock();
+        freeProcessor(p);
+        userReqProcessors.erase(it);
+        processorsMutex.unlock();
+        it = next;
     }
+    cout << "end clean" << endl;
 }
 
-void Server::sendAnswer(TcpClient *client, const string &str) {
-    NetMessage msg(1024);
-    msg.setDataString(str);
-    try {
-        client->send(msg);
-    } catch (NetException e) {
-        cout << e.what() << endl;
-    }
+void Server::freeProcessor(Processor *p) {
+    p->thread->join();
+//    p->alive.lock();
+    delete p->thread;
+    delete p->client;
+    delete p;
 }
 
-void Server::processClientRequest(TcpClient *client) {
-    string userReq = getRequest(client);
-    cout << "Use request:" << endl;
-    cout << userReq << endl;
-    sendAnswer(client, userReq);
-    delete client;
+void Server::addClient(TcpClient *client) {
+    Processor *p = new Processor();
+    p->client = client;
+    p->thread = new thread(&Server::processClientRequest, this, p);
+
+    processorsMutex.lock();
+    userReqProcessors.push_back(p);
+    processorsMutex.unlock();
 }
 
 void Server::exec() {
     cout << "waiting for connection " << this->address->address() << ":" << this->address->port() << " ..." << endl;
     listener->start();
+    bool connected = false;
+    bool clean = true;
     //client to connect
     TcpClient *client = NULL;
     //thread for not-blocking listening accepting clients
-    thread acceptingThread = thread(&Server::acceptClient, this, &client);
-
-    while (status) {
+    thread *acceptingThread = new thread(&Server::acceptClient, this, &client, &connected);
+    thread t;
+//    thread cleaner(&Server::processorsCleanUp, this, &clean);
+    while (isAlive) {
         //if someone connect to server
-        if (!acceptingThread.joinable()) {
-            cout << "client connected" << endl;
-            //not-blocking process client request
-            thread(&Server::processClientRequest, this, client);
+        if (connected) {
+            //blocking processing of client request
+//            addClient(client);
+            acceptingThread->join();
+            delete acceptingThread;
             //run thread again
-            acceptingThread = thread(&Server::acceptClient, this, &client);
+            acceptingThread = new thread(&Server::acceptClient, this, &client, &connected);
         }
+//        this_thread::sleep_for(chrono::seconds(1));
     }
+    cout << "loop end" << endl;
     //connect client, to terminate thread
     connectProxyClient();
+    //end cleaner
+    clean = false;
+//    cleaner.join();
     //wait to end of thread
-    acceptingThread.join();
+    acceptingThread->join();
     //clear references
+    delete acceptingThread;
     if (client) {
         delete client;
     }
+    processorsClean();
+    cout << "Serverwas stopped " << userReqProcessors.size() << endl;
 }
 
 void Server::connectProxyClient() {
@@ -127,13 +149,13 @@ void Server::connectProxyClient() {
     }
 }
 
-bool Server::isAlive() {
-    return status;
+bool Server::status() {
+    return isAlive;
 }
 
 bool Server::start() {
-    if (!status) {
-        this->status = true;
+    if (!isAlive) {
+        this->isAlive = true;
         try {
             this->serverThread = new thread(&Server::exec, this);
         } catch (NetException e) {
@@ -143,5 +165,35 @@ bool Server::start() {
         return true;
     } else {
         return false;
+    }
+}
+
+
+void Server::acceptClient(TcpClient **client, bool *connected) {
+    *connected = false;
+    *client = listener->accept();
+    cout << "connected" << endl;
+    *connected = true;
+}
+
+string Server::getRequest(TcpClient *client) {
+    NetMessage message(1024);
+    string req = "";
+    try {
+        client->receive(message);
+        req += message.dataAsString();
+    } catch (NetException e) {
+        cout << e.what() << endl;
+    }
+    return req;
+}
+
+void Server::sendAnswer(TcpClient *client, const string &str) {
+    NetMessage msg(1024);
+    msg.setDataString(str);
+    try {
+        client->send(msg);
+    } catch (NetException e) {
+        cout << e.what() << endl;
     }
 }
