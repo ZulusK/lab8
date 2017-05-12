@@ -72,13 +72,13 @@ json_t *Country::json() {
 
 Country *Country::load(json_t *jobject) {
     Country *c = NULL;
-    int id = json_integer_value(json_object_get(jobject, "entry-number"));
+    int id = atoi(json_string_value(json_object_get(jobject, "entry-number")));
     auto jitem = json_array_get(json_object_get(jobject, "item"), 0);
     if (jitem) {
-        string name = json_string_value(json_object_get(jobject, "name"));
-        string offName = json_string_value(json_object_get(jobject, "official-name"));
-        string citizen = json_string_value(json_object_get(jobject, "citizen-names"));
-        string abbr = json_string_value(json_object_get(jobject, "country"));
+        string name(json_string_value(json_object_get(jitem, "name")));
+        string offName(json_string_value(json_object_get(jitem, "official-name")));
+        string citizen(json_string_value(json_object_get(jitem, "citizen-names")));
+        string abbr(json_string_value(json_object_get(jitem, "country")));
         c = new Country(name, offName, abbr, citizen, id);
     }
     return c;
@@ -86,10 +86,20 @@ Country *Country::load(json_t *jobject) {
 
 CounriesStorage::CounriesStorage() {}
 
+string Country::toString() {
+    char *jsonString = json_dumps(jsn, JSON_INDENT(2));
+    string s(jsonString);
+    free(jsonString);
+    return s;
+}
+
+Country::~Country() {
+    json_decref(jsn);
+}
+
 CounriesStorage *CounriesStorage::load(const std::string &filename) {
     CounriesStorage *storage = new CounriesStorage();
     ifstream t(filename);
-    cout<<filename<<endl;
     if (t.is_open()) {
         std::string str;
         t.seekg(0, std::ios::end);
@@ -98,9 +108,29 @@ CounriesStorage *CounriesStorage::load(const std::string &filename) {
 
         str.assign((std::istreambuf_iterator<char>(t)),
                    std::istreambuf_iterator<char>());
+        storage->add(str);
         t.close();
-        cout << str << endl;
     }
     return storage;
 }
 
+void CounriesStorage::add(Country *country) {
+    if (country->getId() == 0) {
+        country->setId(id++);
+    }
+    this->items[country->getId()] = country;
+    cout << items[country->getId()]->toString() << endl;
+}
+
+void CounriesStorage::add(std::string &jstr) {
+    json_error_t err;
+    //get array
+    auto jDoc = json_loads(jstr.c_str(), 0, &err);
+    const char *key;
+    json_t *value;
+    //for each object in document, parse and add it to map
+    json_object_foreach(jDoc, key, value) {
+        add(Country::load(value));
+    }
+    json_decref(jDoc);
+}

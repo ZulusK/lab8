@@ -1,0 +1,1 @@
+/usr/bin/c++      CMakeFiles/lab8.dir/src/CounriesStorage.cpp.o CMakeFiles/lab8.dir/src/Server.cpp.o CMakeFiles/lab8.dir/src/main.cpp.o  -o lab8 -rdynamic -ljansson -lprogbase-cpp -lprogbase -lssl -lpthread 

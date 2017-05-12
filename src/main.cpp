@@ -23,7 +23,7 @@ int main(void) {
     Server *server = NULL;
     while (!server) {
         port++;
-        server = Server::create(port, "Lancelot", "Kazimirov Danil", "data/countries.json");
+        server = Server::create(port, "Lancelot", "Kazimirov Danil", "../data/countries.json");
     }
 //    server->start();
 //    this_thread::sleep_for(chrono::seconds(1));
