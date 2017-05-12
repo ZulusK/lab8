@@ -13,6 +13,7 @@ Server::Server(TcpListener *listener, IpAddress *address) {
     this->address = address;
     this->isAlive = false;
     this->serverThread = NULL;
+    srand(time(NULL));
 }
 
 Server *Server::create(int port) {
@@ -27,22 +28,6 @@ Server *Server::create(int port) {
         return NULL;
     }
     return new Server(listener, address);
-}
-
-Server::~Server() {
-    stop();
-    if (serverThread)
-        delete serverThread;
-    delete listener;
-    delete address;
-}
-
-int Server::port() {
-    return address->port();
-}
-
-string Server::ip() {
-    return address->address();
 }
 
 void Server::stop() {
@@ -60,7 +45,7 @@ void Server::stop() {
 void Server::processClientRequest(Processor *processor) {
     processor->alive.lock();
     string userReq = getRequest(processor->client);
-    this_thread::sleep_for(chrono::seconds(1));
+    this_thread::sleep_for(chrono::seconds(rand() % 10));
     sendAnswer(processor->client, userReq);
     processor->alive.unlock();
 }
@@ -69,22 +54,28 @@ void Server::processorsClean() {
     cout << "start clean" << endl;
     for (auto it = userReqProcessors.begin(); it != userReqProcessors.end();) {
         auto next = it + 1;
+        //delete thread
         Processor *p = *it;
-        processorsMutex.lock();
         freeProcessor(p);
+
+        //delete processor from vector
+        processorsMutex.lock();
         userReqProcessors.erase(it);
         processorsMutex.unlock();
+
         it = next;
     }
     cout << "end clean" << endl;
 }
 
 void Server::freeProcessor(Processor *p) {
+    cout << "try to lock" << endl;
+    p->alive.lock();
     p->thread->join();
-//    p->alive.lock();
-    delete p->thread;
     delete p->client;
+    delete p->thread;
     delete p;
+    cout << "deleted" << endl;
 }
 
 void Server::addClient(TcpClient *client) {
@@ -111,8 +102,9 @@ void Server::exec() {
     while (isAlive) {
         //if someone connect to server
         if (connected) {
-            //blocking processing of client request
-//            addClient(client);
+            //not-blocking processing of client request
+            addClient(client);
+
             acceptingThread->join();
             delete acceptingThread;
             //run thread again
@@ -168,7 +160,6 @@ bool Server::start() {
     }
 }
 
-
 void Server::acceptClient(TcpClient **client, bool *connected) {
     *connected = false;
     *client = listener->accept();
@@ -196,4 +187,20 @@ void Server::sendAnswer(TcpClient *client, const string &str) {
     } catch (NetException e) {
         cout << e.what() << endl;
     }
+}
+
+Server::~Server() {
+    stop();
+    if (serverThread)
+        delete serverThread;
+    delete listener;
+    delete address;
+}
+
+int Server::port() {
+    return address->port();
+}
+
+string Server::ip() {
+    return address->address();
 }
