@@ -317,13 +317,13 @@ string Server::processPathReq(const string &path) {
             throw 400;
         }
         if (path.compare("/") == 0) {
-            return createHTTP(getRoot());
+//            return createHTTP(getRoot());
         }
         if (path.find("/favourites") == 0) {
-            return createHTTP(getFavourites(path.substr(10)));
+//            return createHTTP(getFavourites(path.substr(10)));
         }
         if (path.find("/file") == 0) {
-            return createHTTP(getFile(path.substr(5)));
+//            return createHTTP(getFile(path.substr(5)));
         }
         throw 404;
     } catch (int e) {

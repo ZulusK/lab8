@@ -89,6 +89,12 @@
 		<Unit filename="/home/zulus/Projects/GitProj/lab8/include/Server.h">
 			<Option target="lab8"/>
 		</Unit>
+		<Unit filename="/home/zulus/Projects/GitProj/lab8/src/CounriesStorage.cpp">
+			<Option target="lab8"/>
+		</Unit>
+		<Unit filename="/home/zulus/Projects/GitProj/lab8/src/CounriesStorage.h">
+			<Option target="lab8"/>
+		</Unit>
 		<Unit filename="/home/zulus/Projects/GitProj/lab8/src/Server.cpp">
 			<Option target="lab8"/>
 		</Unit>

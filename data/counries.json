@@ -1,0 +1,1231 @@
+{
+    "PT": {
+        "index-entry-number": "147",
+        "entry-number": "147",
+        "entry-timestamp": "2016-04-05T13:23:05Z",
+        "key": "PT",
+        "item": [{
+            "country": "PT",
+            "official-name": "The Portuguese Republic",
+            "name": "Portugal",
+            "citizen-names": "Portuguese"
+        }]
+    },
+    "PW": {
+        "index-entry-number": "140",
+        "entry-number": "140",
+        "entry-timestamp": "2016-04-05T13:23:05Z",
+        "key": "PW",
+        "item": [{
+            "country": "PW",
+            "official-name": "The Republic of Palau",
+            "name": "Palau",
+            "start-date": "1994-10-01",
+            "citizen-names": "Palauan"
+        }]
+    },
+    "PY": {
+        "index-entry-number": "143",
+        "entry-number": "143",
+        "entry-timestamp": "2016-04-05T13:23:05Z",
+        "key": "PY",
+        "item": [{
+            "country": "PY",
+            "official-name": "The Republic of Paraguay",
+            "name": "Paraguay",
+            "citizen-names": "Paraguayan"
+        }]
+    },
+    "YE": {
+        "index-entry-number": "198",
+        "entry-number": "198",
+        "entry-timestamp": "2016-04-05T13:23:05Z",
+        "key": "YE",
+        "item": [{
+            "country": "YE",
+            "official-name": "The Republic of Yemen",
+            "name": "Yemen",
+            "start-date": "1990-05-22",
+            "citizen-names": "Yemeni"
+        }]
+    },
+    "QA": {
+        "index-entry-number": "148",
+        "entry-number": "148",
+        "entry-timestamp": "2016-04-05T13:23:05Z",
+        "key": "QA",
+        "item": [{
+            "country": "QA",
+            "official-name": "The State of Qatar",
+            "name": "Qatar",
+            "citizen-names": "Qatari"
+        }]
+    },
+    "AE": {
+        "index-entry-number": "190",
+        "entry-number": "190",
+        "entry-timestamp": "2016-04-05T13:23:05Z",
+        "key": "AE",
+        "item": [{
+            "country": "AE",
+            "official-name": "The United Arab Emirates",
+            "name": "United Arab Emirates",
+            "citizen-names": "Citizen of the United Arab Emirates"
+        }]
+    },
+    "ZA": {
+        "index-entry-number": "168",
+        "entry-number": "168",
+        "entry-timestamp": "2016-04-05T13:23:05Z",
+        "key": "ZA",
+        "item": [{
+            "country": "ZA",
+            "official-name": "The Republic of South Africa",
+            "name": "South Africa",
+            "citizen-names": "South African"
+        }]
+    },
+    "ZM": {
+        "index-entry-number": "199",
+        "entry-number": "199",
+        "entry-timestamp": "2016-04-05T13:23:05Z",
+        "key": "ZM",
+        "item": [{
+            "country": "ZM",
+            "official-name": "The Republic of Zambia",
+            "name": "Zambia",
+            "citizen-names": "Zambian"
+        }]
+    },
+    "ZW": {
+        "index-entry-number": "200",
+        "entry-number": "200",
+        "entry-timestamp": "2016-04-05T13:23:05Z",
+        "key": "ZW",
+        "item": [{
+            "country": "ZW",
+            "official-name": "The Republic of Zimbabwe",
+            "name": "Zimbabwe",
+            "start-date": "1980-04-18",
+            "citizen-names": "Zimbabwean"
+        }]
+    },
+    "RO": {
+        "index-entry-number": "149",
+        "entry-number": "149",
+        "entry-timestamp": "2016-04-05T13:23:05Z",
+        "key": "RO",
+        "item": [{
+            "country": "RO",
+            "official-name": "Romania",
+            "name": "Romania",
+            "citizen-names": "Romanian"
+        }]
+    },
+    "RS": {
+        "index-entry-number": "160",
+        "entry-number": "160",
+        "entry-timestamp": "2016-04-05T13:23:05Z",
+        "key": "RS",
+        "item": [{
+            "country": "RS",
+            "official-name": "The Republic of Serbia",
+            "name": "Serbia",
+            "citizen-names": "Serbian"
+        }]
+    },
+    "RU": {
+        "index-entry-number": "150",
+        "entry-number": "150",
+        "entry-timestamp": "2016-04-05T13:23:05Z",
+        "key": "RU",
+        "item": [{
+            "country": "RU",
+            "official-name": "The Russian Federation",
+            "name": "Russia",
+            "start-date": "1991-12-25",
+            "citizen-names": "Russian"
+        }]
+    },
+    "RW": {
+        "index-entry-number": "151",
+        "entry-number": "151",
+        "entry-timestamp": "2016-04-05T13:23:05Z",
+        "key": "RW",
+        "item": [{
+            "country": "RW",
+            "official-name": "The Republic of Rwanda",
+            "name": "Rwanda",
+            "citizen-names": "Rwandan"
+        }]
+    },
+    "SA": {
+        "index-entry-number": "158",
+        "entry-number": "158",
+        "entry-timestamp": "2016-04-05T13:23:05Z",
+        "key": "SA",
+        "item": [{
+            "country": "SA",
+            "official-name": "The Kingdom of Saudi Arabia",
+            "name": "Saudi Arabia",
+            "citizen-names": "Saudi Arabian"
+        }]
+    },
+    "SB": {
+        "index-entry-number": "166",
+        "entry-number": "166",
+        "entry-timestamp": "2016-04-05T13:23:05Z",
+        "key": "SB",
+        "item": [{
+            "country": "SB",
+            "official-name": "Solomon Islands",
+            "name": "Solomon Islands",
+            "start-date": "1978-07-07",
+            "citizen-names": "Solomon Islander"
+        }]
+    },
+    "SC": {
+        "index-entry-number": "161",
+        "entry-number": "161",
+        "entry-timestamp": "2016-04-05T13:23:05Z",
+        "key": "SC",
+        "item": [{
+            "country": "SC",
+            "official-name": "The Republic of Seychelles",
+            "name": "Seychelles",
+            "start-date": "1976-06-29",
+            "citizen-names": "Citizen of Seychelles"
+        }]
+    },
+    "BS": {
+        "index-entry-number": "203",
+        "entry-number": "203",
+        "entry-timestamp": "2016-04-05T13:23:05Z",
+        "key": "BS",
+        "item": [{
+            "country": "BS",
+            "official-name": "The Commonwealth of The Bahamas",
+            "name": "The Bahamas",
+            "citizen-names": "Bahamian"
+        }]
+    },
+    "SD": {
+        "index-entry-number": "172",
+        "entry-number": "172",
+        "entry-timestamp": "2016-04-05T13:23:05Z",
+        "key": "SD",
+        "item": [{
+            "country": "SD",
+            "official-name": "The Republic of the Sudan",
+            "name": "Sudan",
+            "citizen-names": "Sudanese"
+        }]
+    },
+    "SE": {
+        "index-entry-number": "175",
+        "entry-number": "175",
+        "entry-timestamp": "2016-04-05T13:23:05Z",
+        "key": "SE",
+        "item": [{
+            "country": "SE",
+            "official-name": "The Kingdom of Sweden",
+            "name": "Sweden",
+            "citizen-names": "Swede"
+        }]
+    },
+    "SG": {
+        "index-entry-number": "163",
+        "entry-number": "163",
+        "entry-timestamp": "2016-04-05T13:23:05Z",
+        "key": "SG",
+        "item": [{
+            "country": "SG",
+            "official-name": "The Republic of Singapore",
+            "name": "Singapore",
+            "citizen-names": "Singaporean"
+        }]
+    },
+    "SI": {
+        "index-entry-number": "165",
+        "entry-number": "165",
+        "entry-timestamp": "2016-04-05T13:23:05Z",
+        "key": "SI",
+        "item": [{
+            "country": "SI",
+            "official-name": "The Republic of Slovenia",
+            "name": "Slovenia",
+            "start-date": "1991-06-25",
+            "citizen-names": "Slovene"
+        }]
+    },
+    "SK": {
+        "index-entry-number": "164",
+        "entry-number": "164",
+        "entry-timestamp": "2016-04-05T13:23:05Z",
+        "key": "SK",
+        "item": [{
+            "country": "SK",
+            "official-name": "The Slovak Republic",
+            "name": "Slovakia",
+            "start-date": "1993-01-01",
+            "citizen-names": "Slovak"
+        }]
+    },
+    "SL": {
+        "index-entry-number": "162",
+        "entry-number": "162",
+        "entry-timestamp": "2016-04-05T13:23:05Z",
+        "key": "SL",
+        "item": [{
+            "country": "SL",
+            "official-name": "The Republic of Sierra Leone",
+            "name": "Sierra Leone",
+            "citizen-names": "Sierra Leonean"
+        }]
+    },
+    "SM": {
+        "index-entry-number": "156",
+        "entry-number": "156",
+        "entry-timestamp": "2016-04-05T13:23:05Z",
+        "key": "SM",
+        "item": [{
+            "country": "SM",
+            "official-name": "The Republic of San Marino",
+            "name": "San Marino",
+            "citizen-names": "Citizen of San Marino"
+        }]
+    },
+    "SN": {
+        "index-entry-number": "159",
+        "entry-number": "159",
+        "entry-timestamp": "2016-04-05T13:23:05Z",
+        "key": "SN",
+        "item": [{
+            "country": "SN",
+            "official-name": "The Republic of Senegal",
+            "name": "Senegal",
+            "citizen-names": "Senegalese"
+        }]
+    },
+    "SO": {
+        "index-entry-number": "167",
+        "entry-number": "167",
+        "entry-timestamp": "2016-04-05T13:23:05Z",
+        "key": "SO",
+        "item": [{
+            "country": "SO",
+            "official-name": "Federal Republic of Somalia",
+            "name": "Somalia",
+            "citizen-names": "Somali"
+        }]
+    },
+    "SR": {
+        "index-entry-number": "173",
+        "entry-number": "173",
+        "entry-timestamp": "2016-04-05T13:23:05Z",
+        "key": "SR",
+        "item": [{
+            "country": "SR",
+            "official-name": "The Republic of Suriname",
+            "name": "Suriname",
+            "start-date": "1975-11-25",
+            "citizen-names": "Surinamer"
+        }]
+    },
+    "SS": {
+        "index-entry-number": "169",
+        "entry-number": "169",
+        "entry-timestamp": "2016-04-05T13:23:05Z",
+        "key": "SS",
+        "item": [{
+            "country": "SS",
+            "official-name": "The Republic of South Sudan",
+            "name": "South Sudan",
+            "start-date": "2011-07-09",
+            "citizen-names": "South Sudanese"
+        }]
+    },
+    "ST": {
+        "index-entry-number": "157",
+        "entry-number": "157",
+        "entry-timestamp": "2016-04-05T13:23:05Z",
+        "key": "ST",
+        "item": [{
+            "country": "ST",
+            "official-name": "The Democratic Republic of Sao Tome and Principe",
+            "name": "Sao Tome and Principe",
+            "start-date": "1975-07-12",
+            "citizen-names": "Citizen of Sao Tome and Principe"
+        }]
+    },
+    "KN": {
+        "index-entry-number": "152",
+        "entry-number": "152",
+        "entry-timestamp": "2016-04-05T13:23:05Z",
+        "key": "KN",
+        "item": [{
+            "country": "KN",
+            "official-name": "The Federation of Saint Christopher and Nevis",
+            "name": "St Kitts and Nevis",
+            "start-date": "1983-09-19",
+            "citizen-names": "Citizen of St Christopher (St Kitts) and Nevis"
+        }]
+    },
+    "CH": {
+        "index-entry-number": "176",
+        "entry-number": "176",
+        "entry-timestamp": "2016-04-05T13:23:05Z",
+        "key": "CH",
+        "item": [{
+            "country": "CH",
+            "official-name": "The Swiss Confederation",
+            "name": "Switzerland",
+            "citizen-names": "Swiss"
+        }]
+    },
+    "SY": {
+        "index-entry-number": "177",
+        "entry-number": "177",
+        "entry-timestamp": "2016-04-05T13:23:05Z",
+        "key": "SY",
+        "item": [{
+            "country": "SY",
+            "official-name": "The Syrian Arab Republic",
+            "name": "Syria",
+            "citizen-names": "Syrian"
+        }]
+    },
+    "SZ": {
+        "index-entry-number": "174",
+        "entry-number": "174",
+        "entry-timestamp": "2016-04-05T13:23:05Z",
+        "key": "SZ",
+        "item": [{
+            "country": "SZ",
+            "official-name": "The Kingdom of Swaziland",
+            "name": "Swaziland",
+            "citizen-names": "Swazi"
+        }]
+    },
+    "TG": {
+        "index-entry-number": "181",
+        "entry-number": "181",
+        "entry-timestamp": "2016-04-05T13:23:05Z",
+        "key": "TG",
+        "item": [{
+            "country": "TG",
+            "official-name": "The Togolese Republic",
+            "name": "Togo",
+            "citizen-names": "Togolese"
+        }]
+    },
+    "TH": {
+        "index-entry-number": "180",
+        "entry-number": "180",
+        "entry-timestamp": "2016-04-05T13:23:05Z",
+        "key": "TH",
+        "item": [{
+            "country": "TH",
+            "official-name": "The Kingdom of Thailand",
+            "name": "Thailand",
+            "citizen-names": "Thai"
+        }]
+    },
+    "TJ": {
+        "index-entry-number": "178",
+        "entry-number": "178",
+        "entry-timestamp": "2016-04-05T13:23:05Z",
+        "key": "TJ",
+        "item": [{
+            "country": "TJ",
+            "official-name": "The Republic of Tajikistan",
+            "name": "Tajikistan",
+            "start-date": "1991-09-09",
+            "citizen-names": "Tajik"
+        }]
+    },
+    "LB": {
+        "index-entry-number": "104",
+        "entry-number": "104",
+        "entry-timestamp": "2016-04-05T13:23:05Z",
+        "key": "LB",
+        "item": [{
+            "country": "LB",
+            "official-name": "The Lebanese Republic",
+            "name": "Lebanon",
+            "citizen-names": "Lebanese"
+        }]
+    },
+    "CZ": {
+        "index-entry-number": "205",
+        "entry-number": "205",
+        "entry-timestamp": "2016-11-11T16:25:07Z",
+        "key": "CZ",
+        "item": [{
+            "country": "CZ",
+            "official-name": "The Czech Republic",
+            "name": "Czechia",
+            "start-date": "1993-01-01",
+            "citizen-names": "Czech"
+        }]
+    },
+    "LC": {
+        "index-entry-number": "153",
+        "entry-number": "153",
+        "entry-timestamp": "2016-04-05T13:23:05Z",
+        "key": "LC",
+        "item": [{
+            "country": "LC",
+            "official-name": "Saint Lucia",
+            "name": "St Lucia",
+            "start-date": "1979-02-22",
+            "citizen-names": "St Lucian"
+        }]
+    },
+    "TM": {
+        "index-entry-number": "186",
+        "entry-number": "186",
+        "entry-timestamp": "2016-04-05T13:23:05Z",
+        "key": "TM",
+        "item": [{
+            "country": "TM",
+            "official-name": "Turkmenistan",
+            "name": "Turkmenistan",
+            "start-date": "1991-10-27",
+            "citizen-names": "Turkmen"
+        }]
+    },
+    "TN": {
+        "index-entry-number": "184",
+        "entry-number": "184",
+        "entry-timestamp": "2016-04-05T13:23:05Z",
+        "key": "TN",
+        "item": [{
+            "country": "TN",
+            "official-name": "The Tunisian Republic",
+            "name": "Tunisia",
+            "citizen-names": "Tunisian"
+        }]
+    },
+    "TO": {
+        "index-entry-number": "182",
+        "entry-number": "182",
+        "entry-timestamp": "2016-04-05T13:23:05Z",
+        "key": "TO",
+        "item": [{
+            "country": "TO",
+            "official-name": "The Kingdom of Tonga",
+            "name": "Tonga",
+            "citizen-names": "Tongan"
+        }]
+    },
+    "LI": {
+        "index-entry-number": "108",
+        "entry-number": "108",
+        "entry-timestamp": "2016-04-05T13:23:05Z",
+        "key": "LI",
+        "item": [{
+            "country": "LI",
+            "official-name": "The Principality of Liechtenstein",
+            "name": "Liechtenstein",
+            "citizen-names": "Liechtenstein citizen"
+        }]
+    },
+    "TR": {
+        "index-entry-number": "185",
+        "entry-number": "185",
+        "entry-timestamp": "2016-04-05T13:23:05Z",
+        "key": "TR",
+        "item": [{
+            "country": "TR",
+            "official-name": "The Republic of Turkey",
+            "name": "Turkey",
+            "citizen-names": "Turk"
+        }]
+    },
+    "LK": {
+        "index-entry-number": "171",
+        "entry-number": "171",
+        "entry-timestamp": "2016-04-05T13:23:05Z",
+        "key": "LK",
+        "item": [{
+            "country": "LK",
+            "official-name": "The Democratic Socialist Republic of Sri Lanka",
+            "name": "Sri Lanka",
+            "citizen-names": "Citizen of Sri Lanka"
+        }]
+    },
+    "TT": {
+        "index-entry-number": "183",
+        "entry-number": "183",
+        "entry-timestamp": "2016-04-05T13:23:05Z",
+        "key": "TT",
+        "item": [{
+            "country": "TT",
+            "official-name": "The Republic of Trinidad and Tobago",
+            "name": "Trinidad and Tobago",
+            "citizen-names": "Trinidad and Tobago citizen"
+        }]
+    },
+    "TV": {
+        "index-entry-number": "187",
+        "entry-number": "187",
+        "entry-timestamp": "2016-04-05T13:23:05Z",
+        "key": "TV",
+        "item": [{
+            "country": "TV",
+            "official-name": "Tuvalu",
+            "name": "Tuvalu",
+            "start-date": "1978-10-01",
+            "citizen-names": "Tuvaluan"
+        }]
+    },
+    "TZ": {
+        "index-entry-number": "179",
+        "entry-number": "179",
+        "entry-timestamp": "2016-04-05T13:23:05Z",
+        "key": "TZ",
+        "item": [{
+            "country": "TZ",
+            "official-name": "The United Republic of Tanzania",
+            "name": "Tanzania",
+            "citizen-names": "Tanzanian"
+        }]
+    },
+    "LR": {
+        "index-entry-number": "106",
+        "entry-number": "106",
+        "entry-timestamp": "2016-04-05T13:23:05Z",
+        "key": "LR",
+        "item": [{
+            "country": "LR",
+            "official-name": "The Republic of Liberia",
+            "name": "Liberia",
+            "citizen-names": "Liberian"
+        }]
+    },
+    "LS": {
+        "index-entry-number": "105",
+        "entry-number": "105",
+        "entry-timestamp": "2016-04-05T13:23:05Z",
+        "key": "LS",
+        "item": [{
+            "country": "LS",
+            "official-name": "The Kingdom of Lesotho",
+            "name": "Lesotho",
+            "citizen-names": "Citizen of Lesotho"
+        }]
+    },
+    "LT": {
+        "index-entry-number": "109",
+        "entry-number": "109",
+        "entry-timestamp": "2016-04-05T13:23:05Z",
+        "key": "LT",
+        "item": [{
+            "country": "LT",
+            "official-name": "The Republic of Lithuania",
+            "name": "Lithuania",
+            "start-date": "1990-03-11",
+            "citizen-names": "Lithuanian"
+        }]
+    },
+    "LU": {
+        "index-entry-number": "110",
+        "entry-number": "110",
+        "entry-timestamp": "2016-04-05T13:23:05Z",
+        "key": "LU",
+        "item": [{
+            "country": "LU",
+            "official-name": "The Grand Duchy of Luxembourg",
+            "name": "Luxembourg",
+            "citizen-names": "Luxembourger"
+        }]
+    },
+    "UA": {
+        "index-entry-number": "189",
+        "entry-number": "189",
+        "entry-timestamp": "2016-04-05T13:23:05Z",
+        "key": "UA",
+        "item": [{
+            "country": "UA",
+            "official-name": "Ukraine",
+            "name": "Ukraine",
+            "start-date": "1991-08-24",
+            "citizen-names": "Ukrainian"
+        }]
+    },
+    "LY": {
+        "index-entry-number": "107",
+        "entry-number": "107",
+        "entry-timestamp": "2016-04-05T13:23:05Z",
+        "key": "LY",
+        "item": [{
+            "country": "LY",
+            "official-name": "Libya",
+            "name": "Libya",
+            "citizen-names": "Libyan"
+        }]
+    },
+    "UG": {
+        "index-entry-number": "188",
+        "entry-number": "188",
+        "entry-timestamp": "2016-04-05T13:23:05Z",
+        "key": "UG",
+        "item": [{
+            "country": "UG",
+            "official-name": "The Republic of Uganda",
+            "name": "Uganda",
+            "citizen-names": "Ugandan"
+        }]
+    },
+    "MA": {
+        "index-entry-number": "127",
+        "entry-number": "127",
+        "entry-timestamp": "2016-04-05T13:23:05Z",
+        "key": "MA",
+        "item": [{
+            "country": "MA",
+            "official-name": "The Kingdom of Morocco",
+            "name": "Morocco",
+            "citizen-names": "Moroccan"
+        }]
+    },
+    "MC": {
+        "index-entry-number": "124",
+        "entry-number": "124",
+        "entry-timestamp": "2016-04-05T13:23:05Z",
+        "key": "MC",
+        "item": [{
+            "country": "MC",
+            "official-name": "The Principality of Monaco",
+            "name": "Monaco",
+            "citizen-names": "Monegasque"
+        }]
+    },
+    "MD": {
+        "index-entry-number": "123",
+        "entry-number": "123",
+        "entry-timestamp": "2016-04-05T13:23:05Z",
+        "key": "MD",
+        "item": [{
+            "country": "MD",
+            "official-name": "The Republic of Moldova",
+            "name": "Moldova",
+            "start-date": "1991-08-27",
+            "citizen-names": "Moldovan"
+        }]
+    },
+    "ME": {
+        "index-entry-number": "126",
+        "entry-number": "126",
+        "entry-timestamp": "2016-04-05T13:23:05Z",
+        "key": "ME",
+        "item": [{
+            "country": "ME",
+            "official-name": "Montenegro",
+            "name": "Montenegro",
+            "citizen-names": "Montenegrin"
+        }]
+    },
+    "MG": {
+        "index-entry-number": "112",
+        "entry-number": "112",
+        "entry-timestamp": "2016-04-05T13:23:05Z",
+        "key": "MG",
+        "item": [{
+            "country": "MG",
+            "official-name": "The Republic of Madagascar",
+            "name": "Madagascar",
+            "citizen-names": "Citizen of Madagascar"
+        }]
+    },
+    "MH": {
+        "index-entry-number": "118",
+        "entry-number": "118",
+        "entry-timestamp": "2016-04-05T13:23:05Z",
+        "key": "MH",
+        "item": [{
+            "country": "MH",
+            "official-name": "The Republic of the Marshall Islands",
+            "name": "Marshall Islands",
+            "start-date": "1986-10-21",
+            "citizen-names": "Marshall Islander"
+        }]
+    },
+    "US": {
+        "index-entry-number": "191",
+        "entry-number": "191",
+        "entry-timestamp": "2016-04-05T13:23:05Z",
+        "key": "US",
+        "item": [{
+            "country": "US",
+            "official-name": "The United States of America",
+            "name": "United States",
+            "citizen-names": "United States citizen"
+        }]
+    },
+    "MK": {
+        "index-entry-number": "111",
+        "entry-number": "111",
+        "entry-timestamp": "2016-04-05T13:23:05Z",
+        "key": "MK",
+        "item": [{
+            "country": "MK",
+            "official-name": "The Republic of Macedonia",
+            "name": "Macedonia",
+            "start-date": "1991-09-08",
+            "citizen-names": "Macedonian"
+        }]
+    },
+    "ML": {
+        "index-entry-number": "116",
+        "entry-number": "116",
+        "entry-timestamp": "2016-04-05T13:23:05Z",
+        "key": "ML",
+        "item": [{
+            "country": "ML",
+            "official-name": "The Republic of Mali",
+            "name": "Mali",
+            "citizen-names": "Malian"
+        }]
+    },
+    "MN": {
+        "index-entry-number": "125",
+        "entry-number": "125",
+        "entry-timestamp": "2016-04-05T13:23:05Z",
+        "key": "MN",
+        "item": [{
+            "country": "MN",
+            "official-name": "Mongolia",
+            "name": "Mongolia",
+            "citizen-names": "Mongolian"
+        }]
+    },
+    "UY": {
+        "index-entry-number": "192",
+        "entry-number": "192",
+        "entry-timestamp": "2016-04-05T13:23:05Z",
+        "key": "UY",
+        "item": [{
+            "country": "UY",
+            "official-name": "The Oriental Republic of Uruguay",
+            "name": "Uruguay",
+            "citizen-names": "Uruguayan"
+        }]
+    },
+    "UZ": {
+        "index-entry-number": "193",
+        "entry-number": "193",
+        "entry-timestamp": "2016-04-05T13:23:05Z",
+        "key": "UZ",
+        "item": [{
+            "country": "UZ",
+            "official-name": "The Republic of Uzbekistan",
+            "name": "Uzbekistan",
+            "start-date": "1991-09-01",
+            "citizen-names": "Uzbek"
+        }]
+    },
+    "MR": {
+        "index-entry-number": "119",
+        "entry-number": "119",
+        "entry-timestamp": "2016-04-05T13:23:05Z",
+        "key": "MR",
+        "item": [{
+            "country": "MR",
+            "official-name": "The Islamic Republic of Mauritania",
+            "name": "Mauritania",
+            "citizen-names": "Mauritanian"
+        }]
+    },
+    "MT": {
+        "index-entry-number": "117",
+        "entry-number": "117",
+        "entry-timestamp": "2016-04-05T13:23:05Z",
+        "key": "MT",
+        "item": [{
+            "country": "MT",
+            "official-name": "The Republic of Malta",
+            "name": "Malta",
+            "citizen-names": "Maltese"
+        }]
+    },
+    "MU": {
+        "index-entry-number": "120",
+        "entry-number": "120",
+        "entry-timestamp": "2016-04-05T13:23:05Z",
+        "key": "MU",
+        "item": [{
+            "country": "MU",
+            "official-name": "The Republic of Mauritius",
+            "name": "Mauritius",
+            "citizen-names": "Mauritian"
+        }]
+    },
+    "MV": {
+        "index-entry-number": "115",
+        "entry-number": "115",
+        "entry-timestamp": "2016-04-05T13:23:05Z",
+        "key": "MV",
+        "item": [{
+            "country": "MV",
+            "official-name": "The Republic of Maldives",
+            "name": "Maldives",
+            "citizen-names": "Maldivian"
+        }]
+    },
+    "MW": {
+        "index-entry-number": "113",
+        "entry-number": "113",
+        "entry-timestamp": "2016-04-05T13:23:05Z",
+        "key": "MW",
+        "item": [{
+            "country": "MW",
+            "official-name": "The Republic of Malawi",
+            "name": "Malawi",
+            "citizen-names": "Malawian"
+        }]
+    },
+    "VA": {
+        "index-entry-number": "204",
+        "entry-number": "204",
+        "entry-timestamp": "2016-04-05T13:23:05Z",
+        "key": "VA",
+        "item": [{
+            "country": "VA",
+            "official-name": "Vatican City State",
+            "name": "Vatican City",
+            "citizen-names": "Vatican citizen"
+        }]
+    },
+    "MX": {
+        "index-entry-number": "121",
+        "entry-number": "121",
+        "entry-timestamp": "2016-04-05T13:23:05Z",
+        "key": "MX",
+        "item": [{
+            "country": "MX",
+            "official-name": "The United Mexican States",
+            "name": "Mexico",
+            "citizen-names": "Mexican"
+        }]
+    },
+    "MY": {
+        "index-entry-number": "114",
+        "entry-number": "114",
+        "entry-timestamp": "2016-04-05T13:23:05Z",
+        "key": "MY",
+        "item": [{
+            "country": "MY",
+            "official-name": "Malaysia",
+            "name": "Malaysia",
+            "citizen-names": "Citizen of Malaysia"
+        }]
+    },
+    "VC": {
+        "index-entry-number": "154",
+        "entry-number": "154",
+        "entry-timestamp": "2016-04-05T13:23:05Z",
+        "key": "VC",
+        "item": [{
+            "country": "VC",
+            "official-name": "Saint Vincent and the Grenadines",
+            "name": "St Vincent",
+            "start-date": "1979-10-27",
+            "citizen-names": "Vincentian"
+        }]
+    },
+    "MZ": {
+        "index-entry-number": "128",
+        "entry-number": "128",
+        "entry-timestamp": "2016-04-05T13:23:05Z",
+        "key": "MZ",
+        "item": [{
+            "country": "MZ",
+            "official-name": "The Republic of Mozambique",
+            "name": "Mozambique",
+            "start-date": "1975-06-25",
+            "citizen-names": "Mozambican"
+        }]
+    },
+    "ES": {
+        "index-entry-number": "170",
+        "entry-number": "170",
+        "entry-timestamp": "2016-04-05T13:23:05Z",
+        "key": "ES",
+        "item": [{
+            "country": "ES",
+            "official-name": "The Kingdom of Spain",
+            "name": "Spain",
+            "citizen-names": "Spaniard;Spanish citizen"
+        }]
+    },
+    "VE": {
+        "index-entry-number": "196",
+        "entry-number": "196",
+        "entry-timestamp": "2016-04-05T13:23:05Z",
+        "key": "VE",
+        "item": [{
+            "country": "VE",
+            "official-name": "The Bolivarian Republic of Venezuela",
+            "name": "Venezuela",
+            "citizen-names": "Venezuelan"
+        }]
+    },
+    "NA": {
+        "index-entry-number": "129",
+        "entry-number": "129",
+        "entry-timestamp": "2016-04-05T13:23:05Z",
+        "key": "NA",
+        "item": [{
+            "country": "NA",
+            "official-name": "The Republic of Namibia",
+            "name": "Namibia",
+            "start-date": "1980-03-21",
+            "citizen-names": "Namibian"
+        }]
+    },
+    "NE": {
+        "index-entry-number": "135",
+        "entry-number": "135",
+        "entry-timestamp": "2016-04-05T13:23:05Z",
+        "key": "NE",
+        "item": [{
+            "country": "NE",
+            "official-name": "The Republic of Niger",
+            "name": "Niger",
+            "citizen-names": "Citizen of Niger"
+        }]
+    },
+    "VN": {
+        "index-entry-number": "197",
+        "entry-number": "197",
+        "entry-timestamp": "2016-04-05T13:23:05Z",
+        "key": "VN",
+        "item": [{
+            "country": "VN",
+            "official-name": "The Socialist Republic of Vietnam",
+            "name": "Vietnam",
+            "citizen-names": "Vietnamese"
+        }]
+    },
+    "NG": {
+        "index-entry-number": "136",
+        "entry-number": "136",
+        "entry-timestamp": "2016-04-05T13:23:05Z",
+        "key": "NG",
+        "item": [{
+            "country": "NG",
+            "official-name": "The Federal Republic of Nigeria",
+            "name": "Nigeria",
+            "citizen-names": "Nigerian"
+        }]
+    },
+    "NI": {
+        "index-entry-number": "134",
+        "entry-number": "134",
+        "entry-timestamp": "2016-04-05T13:23:05Z",
+        "key": "NI",
+        "item": [{
+            "country": "NI",
+            "official-name": "The Republic of Nicaragua",
+            "name": "Nicaragua",
+            "citizen-names": "Nicaraguan"
+        }]
+    },
+    "NL": {
+        "index-entry-number": "132",
+        "entry-number": "132",
+        "entry-timestamp": "2016-04-05T13:23:05Z",
+        "key": "NL",
+        "item": [{
+            "country": "NL",
+            "official-name": "The Kingdom of the Netherlands",
+            "name": "Netherlands",
+            "citizen-names": "Dutch citizen;Dutchman;Dutchwoman"
+        }]
+    },
+    "VU": {
+        "index-entry-number": "194",
+        "entry-number": "194",
+        "entry-timestamp": "2016-04-05T13:23:05Z",
+        "key": "VU",
+        "item": [{
+            "country": "VU",
+            "official-name": "The Republic of Vanuatu",
+            "name": "Vanuatu",
+            "start-date": "1980-07-30",
+            "citizen-names": "Citizen of Vanuatu"
+        }]
+    },
+    "NO": {
+        "index-entry-number": "137",
+        "entry-number": "137",
+        "entry-timestamp": "2016-04-05T13:23:05Z",
+        "key": "NO",
+        "item": [{
+            "country": "NO",
+            "official-name": "The Kingdom of Norway",
+            "name": "Norway",
+            "citizen-names": "Norwegian"
+        }]
+    },
+    "NP": {
+        "index-entry-number": "131",
+        "entry-number": "131",
+        "entry-timestamp": "2016-04-05T13:23:05Z",
+        "key": "NP",
+        "item": [{
+            "country": "NP",
+            "official-name": "The Federal Democratic Republic of Nepal",
+            "name": "Nepal",
+            "citizen-names": "Nepalese"
+        }]
+    },
+    "NR": {
+        "index-entry-number": "130",
+        "entry-number": "130",
+        "entry-timestamp": "2016-04-05T13:23:05Z",
+        "key": "NR",
+        "item": [{
+            "country": "NR",
+            "official-name": "The Republic of Nauru",
+            "name": "Nauru",
+            "citizen-names": "Nauruan"
+        }]
+    },
+    "FM": {
+        "index-entry-number": "122",
+        "entry-number": "122",
+        "entry-timestamp": "2016-04-05T13:23:05Z",
+        "key": "FM",
+        "item": [{
+            "country": "FM",
+            "official-name": "The Federated States of Micronesia",
+            "name": "Micronesia",
+            "start-date": "1986-11-03",
+            "citizen-names": "Micronesian"
+        }]
+    },
+    "NZ": {
+        "index-entry-number": "133",
+        "entry-number": "133",
+        "entry-timestamp": "2016-04-05T13:23:05Z",
+        "key": "NZ",
+        "item": [{
+            "country": "NZ",
+            "official-name": "New Zealand",
+            "name": "New Zealand",
+            "citizen-names": "New Zealander"
+        }]
+    },
+    "WS": {
+        "index-entry-number": "155",
+        "entry-number": "155",
+        "entry-timestamp": "2016-04-05T13:23:05Z",
+        "key": "WS",
+        "item": [{
+            "country": "WS",
+            "official-name": "The Independent State of Samoa",
+            "name": "Samoa",
+            "citizen-names": "Samoan"
+        }]
+    },
+    "OM": {
+        "index-entry-number": "138",
+        "entry-number": "138",
+        "entry-timestamp": "2016-04-05T13:23:05Z",
+        "key": "OM",
+        "item": [{
+            "country": "OM",
+            "official-name": "The Sultanate of Oman",
+            "name": "Oman",
+            "citizen-names": "Omani"
+        }]
+    },
+    "GM": {
+        "index-entry-number": "206",
+        "entry-number": "206",
+        "entry-timestamp": "2017-03-29T14:22:30Z",
+        "key": "GM",
+        "item": [{
+            "country": "GM",
+            "official-name": "The Republic of The Gambia",
+            "name": "The Gambia",
+            "citizen-names": "Gambian"
+        }]
+    },
+    "PA": {
+        "index-entry-number": "141",
+        "entry-number": "141",
+        "entry-timestamp": "2016-04-05T13:23:05Z",
+        "key": "PA",
+        "item": [{
+            "country": "PA",
+            "official-name": "The Republic of Panama",
+            "name": "Panama",
+            "citizen-names": "Panamanian"
+        }]
+    },
+    "PE": {
+        "index-entry-number": "144",
+        "entry-number": "144",
+        "entry-timestamp": "2016-04-05T13:23:05Z",
+        "key": "PE",
+        "item": [{
+            "country": "PE",
+            "official-name": "The Republic of Peru",
+            "name": "Peru",
+            "citizen-names": "Peruvian"
+        }]
+    },
+    "PG": {
+        "index-entry-number": "142",
+        "entry-number": "142",
+        "entry-timestamp": "2016-04-05T13:23:05Z",
+        "key": "PG",
+        "item": [{
+            "country": "PG",
+            "official-name": "The Independent State of Papua New Guinea",
+            "name": "Papua New Guinea",
+            "start-date": "1975-09-16",
+            "citizen-names": "Papua New Guinean"
+        }]
+    },
+    "PH": {
+        "index-entry-number": "145",
+        "entry-number": "145",
+        "entry-timestamp": "2016-04-05T13:23:05Z",
+        "key": "PH",
+        "item": [{
+            "country": "PH",
+            "official-name": "The Republic of the Philippines",
+            "name": "Philippines",
+            "citizen-names": "Filipino;Filipina"
+        }]
+    },
+    "PK": {
+        "index-entry-number": "139",
+        "entry-number": "139",
+        "entry-timestamp": "2016-04-05T13:23:05Z",
+        "key": "PK",
+        "item": [{
+            "country": "PK",
+            "official-name": "The Islamic Republic of Pakistan",
+            "name": "Pakistan",
+            "citizen-names": "Pakistani"
+        }]
+    },
+    "PL": {
+        "index-entry-number": "146",
+        "entry-number": "146",
+        "entry-timestamp": "2016-04-05T13:23:05Z",
+        "key": "PL",
+        "item": [{
+            "country": "PL",
+            "official-name": "The Republic of Poland",
+            "name": "Poland",
+            "citizen-names": "Pole"
+        }]
+    }
+}
