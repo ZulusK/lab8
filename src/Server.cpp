@@ -33,9 +33,7 @@ Server *Server::create(int port) {
 void Server::stop() {
     if (isAlive) {
         this->isAlive = false;
-        //connect client, to terminate thread
-        connectProxyClient();
-        cout << "try to stop" << endl;
+        //wait for end of server thread
         this->serverThread->join();
         delete serverThread;
         this->serverThread = NULL;
@@ -45,47 +43,64 @@ void Server::stop() {
 void Server::processClientRequest(Processor *processor) {
     processor->alive.lock();
     string userReq = getRequest(processor->client);
-    this_thread::sleep_for(chrono::seconds(rand() % 10));
+    this_thread::sleep_for(chrono::seconds(rand() % 3));
     sendAnswer(processor->client, userReq);
     processor->alive.unlock();
 }
 
 void Server::processorsClean() {
-    cout << "start clean" << endl;
-    for (auto it = userReqProcessors.begin(); it != userReqProcessors.end();) {
-        auto next = it + 1;
-        //delete thread
+    processorsMutex.lock();
+    for (auto it = userReqProcessors.begin(); it != userReqProcessors.end(); it++) {
         Processor *p = *it;
+        p->alive.lock();
         freeProcessor(p);
-
-        //delete processor from vector
-        processorsMutex.lock();
-        userReqProcessors.erase(it);
-        processorsMutex.unlock();
-
-        it = next;
     }
-    cout << "end clean" << endl;
+    userReqProcessors.clear();
+    processorsMutex.unlock();
+
 }
 
 void Server::freeProcessor(Processor *p) {
-    cout << "try to lock" << endl;
-    p->alive.lock();
-    p->thread->join();
-    delete p->client;
     delete p->thread;
+    delete p->client;
     delete p;
-    cout << "deleted" << endl;
 }
 
 void Server::addClient(TcpClient *client) {
     Processor *p = new Processor();
+    p->alive.lock();
     p->client = client;
     p->thread = new thread(&Server::processClientRequest, this, p);
+    p->thread->detach();
+    p->alive.unlock();
 
     processorsMutex.lock();
     userReqProcessors.push_back(p);
     processorsMutex.unlock();
+}
+
+void Server::cleaner(bool *status, int timeout) {
+    while (*status) {
+        int i = 0;
+        int size = userReqProcessors.size();
+        vector<int> rmInd;
+        for (auto it = userReqProcessors.begin(); i < size && it != userReqProcessors.end() && *status;) {
+            auto next = it + 1;
+            i++;
+            //delete thread
+            Processor *p = *it;
+            //if it cancel execute
+            if (p->alive.try_lock()) {
+                processorsMutex.lock();
+                freeProcessor(p);
+                userReqProcessors.erase(it);
+                processorsMutex.unlock();
+            }
+            it = next;
+        }
+        cout << "Clients processing: " << userReqProcessors.size() << endl;
+        this_thread::sleep_for(chrono::milliseconds(timeout));
+    }
 }
 
 void Server::exec() {
@@ -97,36 +112,41 @@ void Server::exec() {
     TcpClient *client = NULL;
     //thread for not-blocking listening accepting clients
     thread *acceptingThread = new thread(&Server::acceptClient, this, &client, &connected);
-    thread t;
-//    thread cleaner(&Server::processorsCleanUp, this, &clean);
+    //start garbage collector
+    thread cleaner(&Server::cleaner, this, &clean, CLEANER_TIMEOUT);
+
     while (isAlive) {
         //if someone connect to server
         if (connected) {
             //not-blocking processing of client request
             addClient(client);
-
-            acceptingThread->join();
+            acceptingThread->detach();
             delete acceptingThread;
             //run thread again
-            acceptingThread = new thread(&Server::acceptClient, this, &client, &connected);
+            if (isAlive)
+                acceptingThread = new thread(&Server::acceptClient, this, &client, &connected);
+            else break;
         }
-//        this_thread::sleep_for(chrono::seconds(1));
+        this_thread::sleep_for(chrono::milliseconds(SERVER_TIMEOUT));
     }
-    cout << "loop end" << endl;
     //connect client, to terminate thread
     connectProxyClient();
+
     //end cleaner
     clean = false;
-//    cleaner.join();
+    cleaner.join();
+
     //wait to end of thread
     acceptingThread->join();
+
     //clear references
     delete acceptingThread;
     if (client) {
         delete client;
     }
+
+    //clear all threads
     processorsClean();
-    cout << "Serverwas stopped " << userReqProcessors.size() << endl;
 }
 
 void Server::connectProxyClient() {
@@ -163,7 +183,7 @@ bool Server::start() {
 void Server::acceptClient(TcpClient **client, bool *connected) {
     *connected = false;
     *client = listener->accept();
-    cout << "connected" << endl;
+    cout << "Connection success ... " << endl;
     *connected = true;
 }
 

@@ -7,6 +7,10 @@
 #include <mutex>
 #include <vector>
 
+enum{
+    SERVER_TIMEOUT=10,
+    CLEANER_TIMEOUT=1000
+};
 using namespace progbase::net;
 
 class Server {
@@ -57,6 +61,8 @@ public:
     void processorsClean();
 
     void freeProcessor(Processor *p);
+
+    void cleaner(bool *status, int timeout);
 };
 
 
