@@ -40,22 +40,6 @@ class Server {
 
     void connectProxyClient();
 
-public:
-    static Server *
-    create(int port, const std::string &serverName, const std::string &developer, const std::string &filename);
-
-    bool start();
-
-    bool status();
-
-    ~Server();
-
-    void stop();
-
-    int port();
-
-    std::string ip();
-
     void processClientRequest(Processor *processor);
 
     std::string getRequest(TcpClient *client);
@@ -77,6 +61,23 @@ public:
     std::string getDate();
 
     std::string createHTTPHeader(int errorCode);
+
+public:
+    static Server *
+    create(int port, const std::string &serverName, const std::string &developer, const std::string &filename);
+
+    bool start();
+
+    bool status();
+
+    ~Server();
+
+    void stop();
+
+    int port();
+
+    std::string ip();
+
 };
 
 

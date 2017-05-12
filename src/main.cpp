@@ -34,6 +34,6 @@ int main(void) {
 //    cin >> port;
 //    server->stop();
 //    delete server;
-
+    delete server;
     return 0;
 }

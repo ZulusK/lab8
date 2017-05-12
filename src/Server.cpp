@@ -17,6 +17,13 @@ Server::Server(TcpListener *listener, IpAddress *address, const string &server, 
     this->serverName = server;
     this->serverThread = NULL;
     this->storage = storage;
+
+    cout << this->storage->get("id", "131") << endl;
+    cout << "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" << endl;
+    cout << this->storage->get("name", "") << endl;
+    cout << "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" << endl;
+    cout << this->storage->get("errr", "Philippines") << endl;
+    cout << "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" << endl;
     srand(time(NULL));
 }
 
@@ -215,6 +222,7 @@ Server::~Server() {
         delete serverThread;
     delete listener;
     delete address;
+    delete this->storage;
 }
 
 int Server::port() {

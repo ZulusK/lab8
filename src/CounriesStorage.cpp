@@ -6,83 +6,9 @@
 #include <CounriesStorage.h>
 #include <fstream>
 #include <iostream>
+#include <vector>
 
 using namespace std;
-
-Country::Country(const std::string &name, const std::string &officialName, const std::string &abbr,
-                 const std::string &citizen, int id) {
-    jsn = json_object();
-    setName(name);
-    setOfficialName(officialName);
-    setAbbr(abbr);
-    setCitizen(citizen);
-    setId(id);
-}
-
-const std::string &Country::getName() const {
-    return name;
-}
-
-void Country::setName(const std::string &name) {
-    Country::name = name;
-    json_object_set(jsn, "name", json_string(name.c_str()));
-}
-
-const std::string &Country::getOfficialName() const {
-    return officialName;
-}
-
-void Country::setOfficialName(const std::string &officialName) {
-    Country::officialName = officialName;
-    json_object_set(jsn, "officialName", json_string(officialName.c_str()));
-}
-
-const std::string &Country::getAbbr() const {
-    return abbr;
-}
-
-void Country::setAbbr(const std::string &abbr) {
-    Country::abbr = abbr;
-    json_object_set(jsn, "abbr", json_string(abbr.c_str()));
-}
-
-const std::string &Country::getCitizen() const {
-    return citizen;
-}
-
-void Country::setCitizen(const std::string &citizen) {
-    Country::citizen = citizen;
-    json_object_set(jsn, "citizen", json_string(citizen.c_str()));
-}
-
-int Country::getId() const {
-    return id;
-}
-
-void Country::setId(int id) {
-    Country::id = id;
-    if (id != 0) {
-        json_object_set(jsn, "id", json_integer(id));
-    }
-}
-
-json_t *Country::json() {
-    return jsn;
-}
-
-Country *Country::load(json_t *jobject) {
-    Country *c = NULL;
-    int id = atoi(json_string_value(json_object_get(jobject, "entry-number")));
-    auto jitem = json_array_get(json_object_get(jobject, "item"), 0);
-    if (jitem) {
-        string name(json_string_value(json_object_get(jitem, "name")));
-        string offName(json_string_value(json_object_get(jitem, "official-name")));
-        string citizen(json_string_value(json_object_get(jitem, "citizen-names")));
-        string abbr(json_string_value(json_object_get(jitem, "country")));
-        c = new Country(name, offName, abbr, citizen, id);
-    }
-    return c;
-}
 
 CounriesStorage::CounriesStorage() {}
 
@@ -119,7 +45,6 @@ void CounriesStorage::add(Country *country) {
         country->setId(id++);
     }
     this->items[country->getId()] = country;
-    cout << items[country->getId()]->toString() << endl;
 }
 
 void CounriesStorage::add(std::string &jstr) {
@@ -133,4 +58,57 @@ void CounriesStorage::add(std::string &jstr) {
         add(Country::load(value));
     }
     json_decref(jDoc);
+}
+
+bool nameFilter(Country *c, void *key) {
+    return c->getName().compare(*(string *) key) == 0;
+}
+
+bool officialNameFilter(Country *c, void *key) {
+    return c->getOfficialName().compare(*(string *) key) == 0;
+}
+
+bool abbrFilter(Country *c, void *key) {
+    return c->getAbbr().compare(*(string *) key) == 0;
+}
+
+bool idFilter(Country *c, void *key) {
+    return c->getId() == stoi(*(string *) key);
+}
+
+
+string CounriesStorage::get(bool(*isValid)(Country *c, void *key), const string &key) {
+    auto jarr = json_array();
+    //get elements by filter
+    //convert them to json string
+    for (auto it = items.begin(); it != items.end(); it++) {
+        if (isValid(it->second, (void *) &key)) {
+            json_array_append_new(jarr, it->second->json());
+        }
+    }
+    // create JSON document string
+    char *jsonString = json_dumps(jarr, JSON_INDENT(2));
+    string jstr(jsonString);
+    free(jsonString);
+    json_decref(jarr);
+    return jstr;
+}
+
+string CounriesStorage::get(const string &key, const string &value) {
+    if (key.compare("name") == 0) {
+        return get(nameFilter, value);
+    } else if (key.compare("officialName") == 0) {
+        return get(officialNameFilter, value);
+    } else if (key.compare("abbr") == 0) {
+        return get(abbrFilter, value);
+    } else if (key.compare("id") == 0) {
+        return get(idFilter, value);
+    } else return "";
+}
+
+CounriesStorage::~CounriesStorage() {
+    for (auto it = items.begin(); it != items.end(); it++) {
+        delete it->second;
+    }
+    items.clear();
 }
