@@ -131,7 +131,7 @@ bool Server::isValidCharacter(char c) {
     return isalnum(c) || c == '?' || c == '!' || c == '/' || c == '+' || c == '-' || c == '.' || c == '=';
 }
 
-void Server::processClientRequest(Processor *processor) {
+void Server::processClientRequest(Session *processor) {
     processor->alive.lock();
     cout << "Connection  success [" << processor->id << "]" << endl;
 

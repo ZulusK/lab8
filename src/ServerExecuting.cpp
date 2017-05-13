@@ -17,7 +17,8 @@ Server::Server(TcpListener *listener, IpAddress *address, const std::string &ser
     srand(time(NULL));
 }
 
-Server *Server::create(int port, const std::string &serverName, const std::string &developer, const string &filename,const string &dataFilename) {
+Server *Server::create(int port, const std::string &serverName, const std::string &developer, const string &filename,
+                       const string &dataFilename) {
     CountriesStorage *storage = CountriesStorage::load(filename);
     if (storage == NULL) {
         return NULL;
@@ -35,18 +36,18 @@ Server *Server::create(int port, const std::string &serverName, const std::strin
     return new Server(listener, address, serverName, developer, storage, dataFilename);
 }
 
-void Server::processorsClean() {
+void Server::cleanSessions() {
     processorsMutex.lock();
     for (auto it = userReqProcessors.begin(); it != userReqProcessors.end(); it++) {
-        Processor *p = *it;
+        Session *p = *it;
         p->alive.lock();
-        freeProcessor(p);
+        freeSession(p);
     }
     userReqProcessors.clear();
     processorsMutex.unlock();
 }
 
-void Server::freeProcessor(Processor *p) {
+void Server::freeSession(Session *p) {
     cout << "DELETE client [" << p->id << "]" << endl;
     delete p->thread;
     delete p->client;
@@ -54,7 +55,7 @@ void Server::freeProcessor(Processor *p) {
 }
 
 void Server::addClient(TcpClient *client) {
-    Processor *p = new Processor();
+    Session *p = new Session();
     p->alive.lock();
     p->client = client;
     p->id = clock();
@@ -76,11 +77,11 @@ void Server::cleaner(bool *status, int timeout) {
             auto next = it + 1;
             i++;
             //delete thread
-            Processor *p = *it;
+            Session *p = *it;
             //if it canceled execute
             if (p->alive.try_lock()) {
                 processorsMutex.lock();
-                freeProcessor(p);
+                freeSession(p);
                 userReqProcessors.erase(it);
                 processorsMutex.unlock();
             }
@@ -133,7 +134,7 @@ void Server::exec() {
     }
 
     //clear all threads
-    processorsClean();
+    cleanSessions();
 }
 
 void Server::connectProxyClient() {
