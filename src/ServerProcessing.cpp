@@ -1,6 +1,8 @@
 #include <Server.h>
 #include <iostream>
 #include <vector>
+#include <cstdlib>
+#include <TextProcessor.h>
 
 #define HEND "\r\n"
 #define HHEND "\r\n\r\n"
@@ -179,7 +181,7 @@ string Server::headerHTTP(int errorCode) {
     http += "Date: " + getDate() + HEND;
     http += "Server: " + serverName + "/" + developer + HEND;
     if (errorCode >= 200 && errorCode < 400) {
-        http += string("Content-Type: text/json") + HEND;
+        http += string("Content-Type: text/json");
     }
     return http;
 }
@@ -233,8 +235,40 @@ string Server::getItems(const string &path) {
     return "";
 }
 
+string Server::fileInfo() {
+    auto jobj = json_object();
+    string text = TextProcessor::read(this->filename);
+    long size = TextProcessor::fileSize(this->filename);
+    json_object_set_new(jobj, "filename", json_string(filename.c_str()));
+    json_object_set_new(jobj, "size", json_integer(size));
+    json_object_set_new(jobj, "text", json_string(text.c_str()));
+
+    char *jsonString = json_dumps(jobj, JSON_INDENT(2));
+    string jstr(jsonString);
+    free(jsonString);
+    return jstr;
+}
+
+string Server::dataInfo() {
+    auto jobj = json_object();
+    string text = TextProcessor::read(this->filename);
+    long max;
+    long count;
+    TextProcessor::process(text, max, count);
+    json_object_set_new(jobj, "filename", json_string(filename.c_str()));
+    json_object_set_new(jobj, "max", json_integer(max));
+    json_object_set_new(jobj, "count", json_integer(count));
+
+    char *jsonString = json_dumps(jobj, JSON_INDENT(2));
+    string jstr(jsonString);
+    free(jsonString);
+    return jstr;
+}
+
 string Server::get(const string &path) {
     if (path.compare("/") == 0) return info();
+    if (path.compare("/file") == 0)return fileInfo();
+    if (path.compare("/file/data") == 0)return dataInfo();
     if (path.find("/favorites?") == 0) return getItems(path.substr(11));
     if (path.compare("/favorites") == 0) return storage->get("", "");
     else return "";
@@ -262,10 +296,57 @@ HTTPResponse *Server::getResponse(HTTPRequest *request) {
     return response;
 }
 
+string to_hex_string(size_t a) {
+    char buff[20];
+    sprintf(buff, "%x", a);
+    return buff;
+}
+
+void Server::sendChunkedResponse(HTTPResponse *response) {
+
+    string header = response->header;
+    size_t pos = 0;
+    size_t size = 0;
+    do {
+        string chunk;
+        //get size of the next chunk
+        size = min(response->answer.length() - pos + header.length(), (size_t) MAX_RESPONSE_LEN - 70) - header.length();
+        if (size == 0) {
+//            chunk = header;
+//            chunk += HEND;
+//            chunk += "Connection: closed";
+//            chunk += HHEND;
+            chunk += to_hex_string(size);
+            chunk += HEND;
+            chunk += HEND;
+        } else {
+            if (header.length() > 0) {
+                chunk = header;
+                header = "";
+                chunk += HEND;
+                chunk += "Transfer-Encoding: chunked";
+                chunk += HEND;
+                chunk += "Connection: keep-alive";
+                chunk += HHEND;
+            } else {
+                chunk = "";
+            }
+            chunk += to_hex_string(size);
+            chunk += HEND;
+            chunk += response->answer.substr(pos, size);
+            chunk += HEND;
+        }
+        pos += size;
+        sendString(response->client, chunk);
+    } while (size != 0);
+}
+
 void Server::sendResponse(HTTPResponse *response) {
-    string message = response->header+"Connection: Closed" + HHEND + response->answer;
+    string message = response->header + "Connection: Closed" + HHEND + response->answer;
     if (message.length() < MAX_RESPONSE_LEN) {
         sendString(response->client, message);
+    } else {
+        sendChunkedResponse(response);
     }
 }
 

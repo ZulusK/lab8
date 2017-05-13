@@ -95,6 +95,9 @@
 		<Unit filename="/home/zulus/Projects/GitProj/lab8/include/Server.h">
 			<Option target="lab8"/>
 		</Unit>
+		<Unit filename="/home/zulus/Projects/GitProj/lab8/include/TextProcessor.h">
+			<Option target="lab8"/>
+		</Unit>
 		<Unit filename="/home/zulus/Projects/GitProj/lab8/src/CounriesStorage.cpp">
 			<Option target="lab8"/>
 		</Unit>
@@ -105,6 +108,9 @@
 			<Option target="lab8"/>
 		</Unit>
 		<Unit filename="/home/zulus/Projects/GitProj/lab8/src/ServerProcessing.cpp">
+			<Option target="lab8"/>
+		</Unit>
+		<Unit filename="/home/zulus/Projects/GitProj/lab8/src/TextProcessor.cpp">
 			<Option target="lab8"/>
 		</Unit>
 		<Unit filename="/home/zulus/Projects/GitProj/lab8/src/main.cpp">

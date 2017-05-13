@@ -4,8 +4,8 @@
 
 using namespace std;
 
-Server::Server(TcpListener *listener, IpAddress *address, const string &server, const string &developer,
-               CounriesStorage *storage) {
+Server::Server(TcpListener *listener, IpAddress *address, const std::string &server, const std::string &dev,
+               CounriesStorage *storage, const std::string &filename) {
     this->listener = listener;
     this->address = address;
     this->isAlive = false;
@@ -13,10 +13,11 @@ Server::Server(TcpListener *listener, IpAddress *address, const string &server, 
     this->serverName = server;
     this->serverThread = NULL;
     this->storage = storage;
+    this->filename = filename;
     srand(time(NULL));
 }
 
-Server *Server::create(int port, const std::string &serverName, const std::string &developer, const string &filename) {
+Server *Server::create(int port, const std::string &serverName, const std::string &developer, const string &filename,const string &dataFilename) {
     CounriesStorage *storage = CounriesStorage::load(filename);
     if (storage == NULL) {
         return NULL;
@@ -31,7 +32,7 @@ Server *Server::create(int port, const std::string &serverName, const std::strin
         delete address;
         return NULL;
     }
-    return new Server(listener, address, serverName, developer, storage);
+    return new Server(listener, address, serverName, developer, storage, dataFilename);
 }
 
 void Server::processorsClean() {
@@ -203,6 +204,7 @@ Server::~Server() {
 void Server::stop() {
     if (isAlive) {
         this->isAlive = false;
+        this_thread::sleep_for(chrono::milliseconds(100));
         connectProxyClient();
         //wait for end of server thread
         this->serverThread->join();

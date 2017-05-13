@@ -7,6 +7,7 @@
 #include <fstream>
 #include <iostream>
 #include <vector>
+#include <TextProcessor.h>
 
 using namespace std;
 
@@ -25,18 +26,8 @@ Country::~Country() {
 
 CounriesStorage *CounriesStorage::load(const std::string &filename) {
     CounriesStorage *storage = new CounriesStorage();
-    ifstream t(filename);
-    if (t.is_open()) {
-        std::string str;
-        t.seekg(0, std::ios::end);
-        str.reserve(t.tellg());
-        t.seekg(0, std::ios::beg);
-
-        str.assign((std::istreambuf_iterator<char>(t)),
-                   std::istreambuf_iterator<char>());
-        storage->add(str);
-        t.close();
-    }
+    string str = TextProcessor::read(filename);
+    storage->add(str);
     return storage;
 }
 

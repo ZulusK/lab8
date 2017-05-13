@@ -1,6 +1,7 @@
 #include <iostream>
 #include <Server.h>
 #include <CounriesStorage.h>
+#include <TextProcessor.h>
 
 using namespace std;
 
@@ -23,7 +24,7 @@ int main(void) {
     Server *server = NULL;
     while (!server) {
         port++;
-        server = Server::create(port, "Lancelot", "Kazimirov Danil", "../data/countries.json");
+        server = Server::create(port, "Lancelot", "Kazimirov Danil", "../data/countries.json","../data/data.txt");
     }
     server->start();
     cout<<server->toString()<<endl;

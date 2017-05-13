@@ -49,9 +49,10 @@ class Server {
     std::string serverName;
     std::string developer;
     CounriesStorage *storage;
+    std::string filename;
 
     Server(TcpListener *listener, IpAddress *address, const std::string &server, const std::string &dev,
-           CounriesStorage *storage);
+           CounriesStorage *storage, const std::string &filename);
 
     void exec();
 
@@ -75,9 +76,14 @@ class Server {
 
     std::string headerHTTP(int errorCode);
 
+    std::string fileInfo();
+
+    std::string dataInfo();
+
 public:
     static Server *
-    create(int port, const std::string &serverName, const std::string &developer, const std::string &filename);
+    create(int port, const std::string &serverName, const std::string &developer, const std::string &filename,
+           const std::string &dataFilename);
 
     bool start();
 
@@ -114,6 +120,8 @@ public:
     std::string info();
 
     std::string getItems(const std::string &path);
+
+    void sendChunkedResponse(HTTPResponse *response);
 };
 
 
