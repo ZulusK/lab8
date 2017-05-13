@@ -6,7 +6,7 @@
 #include <thread>
 #include <mutex>
 #include <vector>
-#include <CounriesStorage.h>
+#include <CountriesStorage.h>
 
 enum {
     MAX_RESPONSE_LEN = 2048,
@@ -48,11 +48,11 @@ class Server {
     std::vector<Processor *> userReqProcessors;
     std::string serverName;
     std::string developer;
-    CounriesStorage *storage;
+    CountriesStorage *storage;
     std::string filename;
 
     Server(TcpListener *listener, IpAddress *address, const std::string &server, const std::string &dev,
-           CounriesStorage *storage, const std::string &filename);
+           CountriesStorage *storage, const std::string &filename);
 
     void exec();
 

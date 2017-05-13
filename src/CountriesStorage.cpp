@@ -3,7 +3,7 @@
 //
 
 #include <string>
-#include <CounriesStorage.h>
+#include <CountriesStorage.h>
 #include <fstream>
 #include <iostream>
 #include <vector>
@@ -11,7 +11,7 @@
 
 using namespace std;
 
-CounriesStorage::CounriesStorage() {}
+CountriesStorage::CountriesStorage() {}
 
 string Country::toString() {
     char *jsonString = json_dumps(jsn, JSON_INDENT(2));
@@ -24,21 +24,21 @@ Country::~Country() {
     json_decref(jsn);
 }
 
-CounriesStorage *CounriesStorage::load(const std::string &filename) {
-    CounriesStorage *storage = new CounriesStorage();
+CountriesStorage *CountriesStorage::load(const std::string &filename) {
+    CountriesStorage *storage = new CountriesStorage();
     string str = TextProcessor::read(filename);
     storage->add(str);
     return storage;
 }
 
-void CounriesStorage::add(Country *country) {
+void CountriesStorage::add(Country *country) {
     if (country->getId() == 0) {
         country->setId(id++);
     }
     this->items[country->getId()] = country;
 }
 
-void CounriesStorage::add(std::string &jstr) {
+void CountriesStorage::add(std::string &jstr) {
     json_error_t err;
     //get array
     auto jDoc = json_loads(jstr.c_str(), 0, &err);
@@ -75,7 +75,7 @@ bool positiveFilter(Country *c, void *key) {
     return true;
 }
 
-string CounriesStorage::get(bool(*isValid)(Country *c, void *key), const string &key) {
+string CountriesStorage::get(bool(*isValid)(Country *c, void *key), const string &key) {
     auto jarr = json_array();
     //get elements by filter
     //convert them to json string
@@ -92,7 +92,7 @@ string CounriesStorage::get(bool(*isValid)(Country *c, void *key), const string 
     return jstr;
 }
 
-string CounriesStorage::get(const string &key, const string &value) {
+string CountriesStorage::get(const string &key, const string &value) {
     if (key.compare("name") == 0) {
         return get(nameFilter, value);
     } else if (key.compare("officialName") == 0) {
@@ -108,17 +108,17 @@ string CounriesStorage::get(const string &key, const string &value) {
     }
 }
 
-CounriesStorage::~CounriesStorage() {
+CountriesStorage::~CountriesStorage() {
     for (auto it = items.begin(); it != items.end(); it++) {
         delete it->second;
     }
     items.clear();
 }
 
-int CounriesStorage::size() {
+int CountriesStorage::size() {
     return items.size();
 }
 
-string CounriesStorage::get(int id) {
+string CountriesStorage::get(int id) {
     return get(idFilter, to_string(id));
 }

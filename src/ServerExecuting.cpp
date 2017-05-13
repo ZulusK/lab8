@@ -5,7 +5,7 @@
 using namespace std;
 
 Server::Server(TcpListener *listener, IpAddress *address, const std::string &server, const std::string &dev,
-               CounriesStorage *storage, const std::string &filename) {
+               CountriesStorage *storage, const std::string &filename) {
     this->listener = listener;
     this->address = address;
     this->isAlive = false;
@@ -18,7 +18,7 @@ Server::Server(TcpListener *listener, IpAddress *address, const std::string &ser
 }
 
 Server *Server::create(int port, const std::string &serverName, const std::string &developer, const string &filename,const string &dataFilename) {
-    CounriesStorage *storage = CounriesStorage::load(filename);
+    CountriesStorage *storage = CountriesStorage::load(filename);
     if (storage == NULL) {
         return NULL;
     }
