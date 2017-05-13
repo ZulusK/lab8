@@ -86,7 +86,7 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/zulus/Projects/GitProj/lab8/include/CounriesStorage.h">
+		<Unit filename="/home/zulus/Projects/GitProj/lab8/include/CountriesStorage.h">
 			<Option target="lab8"/>
 		</Unit>
 		<Unit filename="/home/zulus/Projects/GitProj/lab8/include/Country.h">
@@ -98,7 +98,7 @@
 		<Unit filename="/home/zulus/Projects/GitProj/lab8/include/TextProcessor.h">
 			<Option target="lab8"/>
 		</Unit>
-		<Unit filename="/home/zulus/Projects/GitProj/lab8/src/CounriesStorage.cpp">
+		<Unit filename="/home/zulus/Projects/GitProj/lab8/src/CountriesStorage.cpp">
 			<Option target="lab8"/>
 		</Unit>
 		<Unit filename="/home/zulus/Projects/GitProj/lab8/src/Country.cpp">
