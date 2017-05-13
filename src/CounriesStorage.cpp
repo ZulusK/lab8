@@ -112,3 +112,7 @@ CounriesStorage::~CounriesStorage() {
     }
     items.clear();
 }
+
+int CounriesStorage::size() {
+    return items.size();
+}

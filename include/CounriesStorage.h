@@ -31,6 +31,7 @@ public:
     std::string get(const std::string &key, const std::string &value);
 
 
+    int size();
 };
 
 

@@ -1,7 +1,3 @@
-//
-// Created by zulus on 11.05.17.
-//
-
 #include <Server.h>
 #include <iostream>
 #include <vector>
@@ -17,13 +13,6 @@ Server::Server(TcpListener *listener, IpAddress *address, const string &server, 
     this->serverName = server;
     this->serverThread = NULL;
     this->storage = storage;
-
-    cout << this->storage->get("id", "131") << endl;
-    cout << "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" << endl;
-    cout << this->storage->get("name", "") << endl;
-    cout << "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" << endl;
-    cout << this->storage->get("errr", "Philippines") << endl;
-    cout << "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" << endl;
     srand(time(NULL));
 }
 
@@ -42,18 +31,7 @@ Server *Server::create(int port, const std::string &serverName, const std::strin
         delete address;
         return NULL;
     }
-
     return new Server(listener, address, serverName, developer, storage);
-}
-
-void Server::stop() {
-    if (isAlive) {
-        this->isAlive = false;
-        //wait for end of server thread
-        this->serverThread->join();
-        delete serverThread;
-        this->serverThread = NULL;
-    }
 }
 
 void Server::processorsClean() {
@@ -65,10 +43,10 @@ void Server::processorsClean() {
     }
     userReqProcessors.clear();
     processorsMutex.unlock();
-
 }
 
 void Server::freeProcessor(Processor *p) {
+    cout << "DELETE client [" << p->id << "]" << endl;
     delete p->thread;
     delete p->client;
     delete p;
@@ -78,6 +56,7 @@ void Server::addClient(TcpClient *client) {
     Processor *p = new Processor();
     p->alive.lock();
     p->client = client;
+    p->id = clock();
     p->thread = new thread(&Server::processClientRequest, this, p);
     p->thread->detach();
     p->alive.unlock();
@@ -97,7 +76,7 @@ void Server::cleaner(bool *status, int timeout) {
             i++;
             //delete thread
             Processor *p = *it;
-            //if it cancel execute
+            //if it canceled execute
             if (p->alive.try_lock()) {
                 processorsMutex.lock();
                 freeProcessor(p);
@@ -106,13 +85,11 @@ void Server::cleaner(bool *status, int timeout) {
             }
             it = next;
         }
-//        cout << "Clients processing: " << userReqProcessors.size() << endl;
         this_thread::sleep_for(chrono::milliseconds(timeout));
     }
 }
 
 void Server::exec() {
-    cout << "waiting for connection " << this->address->address() << ":" << this->address->port() << " ..." << endl;
     listener->start();
     bool connected = false;
     bool clean = true;
@@ -128,7 +105,8 @@ void Server::exec() {
         if (connected) {
             //not-blocking processing of client request
             addClient(client);
-            acceptingThread->detach();
+//            acceptingThread->detach();
+            acceptingThread->join();
             delete acceptingThread;
             //run thread again
             if (isAlive)
@@ -161,20 +139,17 @@ void Server::connectProxyClient() {
     TcpClient client;
     try {
         client.connect(*address);
-        NetMessage msg(10);
-        msg.setDataString("stop");
+        NetMessage msg(5);
+        msg.setDataString("");
         client.send(msg);
     } catch (NetException e) {
         cout << e.what() << endl;
     }
 }
 
-bool Server::status() {
-    return isAlive;
-}
-
 bool Server::start() {
     if (!isAlive) {
+        cout << "===================Server started===================" << endl;
         this->isAlive = true;
         try {
             this->serverThread = new thread(&Server::exec, this);
@@ -183,9 +158,8 @@ bool Server::start() {
             return false;
         }
         return true;
-    } else {
-        return false;
     }
+    return false;
 }
 
 void Server::acceptClient(TcpClient **client, bool *connected) {
@@ -194,8 +168,20 @@ void Server::acceptClient(TcpClient **client, bool *connected) {
     *connected = true;
 }
 
-string Server::getRequest(TcpClient *client) {
-    NetMessage message(1024);
+void Server::sendString(TcpClient *client, const string &str) {
+    NetMessage msg(MAX_RESPONSE_LEN);
+    msg.setDataString(str);
+    sender.lock();
+    try {
+        client->send(msg);
+    } catch (NetException e) {
+        cout << e.what() << endl;
+    }
+    sender.unlock();
+}
+
+string Server::getRequestStr(TcpClient *client) {
+    NetMessage message(MAX_REQUEST_LEN);
     string req = "";
     try {
         client->receive(message);
@@ -206,23 +192,26 @@ string Server::getRequest(TcpClient *client) {
     return req;
 }
 
-void Server::sendAnswer(TcpClient *client, const string &str) {
-    NetMessage msg(2048);
-    msg.setDataString(str);
-    try {
-        client->send(msg);
-    } catch (NetException e) {
-        cout << e.what() << endl;
-    }
-}
-
 Server::~Server() {
     stop();
-    if (serverThread)
-        delete serverThread;
     delete listener;
     delete address;
     delete this->storage;
+}
+
+void Server::stop() {
+    if (isAlive) {
+        this->isAlive = false;
+        //wait for end of server thread
+        this->serverThread->join();
+        delete serverThread;
+        this->serverThread = NULL;
+        cout << "===================Server stopped===================" << endl;
+    }
+}
+
+bool Server::status() {
+    return isAlive;
 }
 
 int Server::port() {
@@ -233,114 +222,3 @@ string Server::ip() {
     return address->address();
 }
 
-bool isValidCharacter(char c) {
-    return isalnum(c) || c == '?' || c == '!' || c == '/' || c == '+' || c == '-' || c == '.';
-}
-
-string Server::getPathFromReq(const string &req) {
-    string path = "/";
-    int pos = req.find("GET") + 4;
-    int pathPos = req.find("/", pos);
-    int httpPos = req.find("HTTP/1.");
-    if (pos == -1 || pos > req.length() || httpPos == req.npos) {
-        return "";
-    }
-    if (pathPos == req.npos || pathPos < pos || pathPos > req.find("HTTP/1.")) {
-        return "";
-    }
-    int i;
-    for (i = pathPos + 1; i < httpPos; i++) {
-        if (!isValidCharacter(req[i])) {
-            break;
-        }
-    }
-    path = req.substr(pathPos, i - pathPos);
-    return path;
-}
-
-void Server::processClientRequest(Processor *processor) {
-    processor->alive.lock();
-    cout << "Connection success ... " << endl;
-    string userReq = getRequest(processor->client);
-    string path = getPathFromReq(userReq);
-    string answer = processPathReq(path);
-    cout << answer << endl;
-    sendAnswer(processor->client, answer);
-    cout << "Send answer ... " << endl;
-    processor->alive.unlock();
-}
-
-string Server::getDate() {
-    std::time_t rawtime;
-    std::tm *timeinfo;
-    char buffer[80];
-
-    std::time(&rawtime);
-    timeinfo = std::localtime(&rawtime);
-
-    std::strftime(buffer, 80, "%Y-%m-%d-%H-%M-%S", timeinfo);
-    return buffer;
-}
-
-string Server::createHTTPHeader(int errorCode) {
-    auto http = "HTTP/1.1 " + to_string(errorCode) + " ";
-    switch (errorCode) {
-        case 400:
-            http += "Bad Request";
-            break;
-        case
-            401:
-            http += "Unauthorized";
-            break;
-        case 403:
-            http += "Forbidden";
-            break;
-        case 404:
-            http += "Not Found";
-            break;
-        case 410:
-            http += "Gone";
-            break;
-        case 413:
-            http += "Request Entity Too Large";
-            break;
-        case 414:
-            http += "Request-URI Too Large";
-            break;
-        case 415:
-            http += "Unsupported Media Type";
-            break;
-        case 416:
-            http += "Requested Range Not Satisfiable";
-            break;
-        case 417:
-            http += "Expectation Failed";
-            break;
-        case 423:
-            http += "Locked";
-            break;
-    }
-    http += "\r\n";
-    http += "Date: " + getDate() + "\r\n";
-    return http;
-}
-
-string Server::processPathReq(const string &path) {
-    try {
-        if (path.length() == 0) {
-            throw 400;
-        }
-        if (path.compare("/") == 0) {
-//            return createHTTPHeader(getRoot());
-        }
-        if (path.find("/favourites") == 0) {
-//            return createHTTPHeader(getFavourites(path.substr(10)));
-        }
-        if (path.find("/file") == 0) {
-//            return createHTTPHeader(getFile(path.substr(5)));
-        }
-        throw 404;
-    } catch (int e) {
-        return createHTTPHeader(e);
-    }
-}
