@@ -172,6 +172,7 @@ void Server::sendString(TcpClient *client, const string &str) {
     NetMessage msg(MAX_RESPONSE_LEN);
     msg.setDataString(str);
     sender.lock();
+    cout << "SEND" << endl << str << endl;
     try {
         client->send(msg);
     } catch (NetException e) {
@@ -202,6 +203,7 @@ Server::~Server() {
 void Server::stop() {
     if (isAlive) {
         this->isAlive = false;
+        connectProxyClient();
         //wait for end of server thread
         this->serverThread->join();
         delete serverThread;

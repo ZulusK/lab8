@@ -1,5 +1,6 @@
 {
     "PT": {
+        "color": "green",
         "index-entry-number": "147",
         "entry-number": "147",
         "entry-timestamp": "2016-04-05T13:23:05Z",
@@ -12,6 +13,7 @@
         }]
     },
     "PW": {
+        "color": "green",
         "index-entry-number": "140",
         "entry-number": "140",
         "entry-timestamp": "2016-04-05T13:23:05Z",
@@ -25,6 +27,7 @@
         }]
     },
     "PY": {
+        "color": "blue",
         "index-entry-number": "143",
         "entry-number": "143",
         "entry-timestamp": "2016-04-05T13:23:05Z",
@@ -37,6 +40,7 @@
         }]
     },
     "YE": {
+        "color": "yellow",
         "index-entry-number": "198",
         "entry-number": "198",
         "entry-timestamp": "2016-04-05T13:23:05Z",
@@ -50,6 +54,7 @@
         }]
     },
     "QA": {
+        "color": "black",
         "index-entry-number": "148",
         "entry-number": "148",
         "entry-timestamp": "2016-04-05T13:23:05Z",
@@ -62,6 +67,7 @@
         }]
     },
     "AE": {
+        "color": "green",
         "index-entry-number": "190",
         "entry-number": "190",
         "entry-timestamp": "2016-04-05T13:23:05Z",
@@ -74,6 +80,7 @@
         }]
     },
     "ZA": {
+        "color": "white",
         "index-entry-number": "168",
         "entry-number": "168",
         "entry-timestamp": "2016-04-05T13:23:05Z",
@@ -86,6 +93,7 @@
         }]
     },
     "ZM": {
+        "color": "red",
         "index-entry-number": "199",
         "entry-number": "199",
         "entry-timestamp": "2016-04-05T13:23:05Z",
@@ -98,6 +106,7 @@
         }]
     },
     "ZW": {
+        "color": "green",
         "index-entry-number": "200",
         "entry-number": "200",
         "entry-timestamp": "2016-04-05T13:23:05Z",
@@ -111,6 +120,7 @@
         }]
     },
     "RO": {
+        "color": "white",
         "index-entry-number": "149",
         "entry-number": "149",
         "entry-timestamp": "2016-04-05T13:23:05Z",
@@ -123,6 +133,7 @@
         }]
     },
     "RS": {
+        "color": "black",
         "index-entry-number": "160",
         "entry-number": "160",
         "entry-timestamp": "2016-04-05T13:23:05Z",
@@ -135,6 +146,7 @@
         }]
     },
     "RU": {
+        "color": "green",
         "index-entry-number": "150",
         "entry-number": "150",
         "entry-timestamp": "2016-04-05T13:23:05Z",
@@ -148,6 +160,7 @@
         }]
     },
     "RW": {
+        "color": "white",
         "index-entry-number": "151",
         "entry-number": "151",
         "entry-timestamp": "2016-04-05T13:23:05Z",
@@ -160,6 +173,7 @@
         }]
     },
     "SA": {
+        "color": "red",
         "index-entry-number": "158",
         "entry-number": "158",
         "entry-timestamp": "2016-04-05T13:23:05Z",
@@ -172,6 +186,7 @@
         }]
     },
     "SB": {
+        "color": "white",
         "index-entry-number": "166",
         "entry-number": "166",
         "entry-timestamp": "2016-04-05T13:23:05Z",
@@ -185,6 +200,7 @@
         }]
     },
     "SC": {
+        "color": "green",
         "index-entry-number": "161",
         "entry-number": "161",
         "entry-timestamp": "2016-04-05T13:23:05Z",
@@ -198,6 +214,7 @@
         }]
     },
     "BS": {
+        "color": "black",
         "index-entry-number": "203",
         "entry-number": "203",
         "entry-timestamp": "2016-04-05T13:23:05Z",
@@ -210,6 +227,7 @@
         }]
     },
     "SD": {
+        "color": "white",
         "index-entry-number": "172",
         "entry-number": "172",
         "entry-timestamp": "2016-04-05T13:23:05Z",
@@ -222,6 +240,7 @@
         }]
     },
     "SE": {
+        "color": "red",
         "index-entry-number": "175",
         "entry-number": "175",
         "entry-timestamp": "2016-04-05T13:23:05Z",
@@ -234,6 +253,7 @@
         }]
     },
     "SG": {
+        "color": "green",
         "index-entry-number": "163",
         "entry-number": "163",
         "entry-timestamp": "2016-04-05T13:23:05Z",
@@ -246,6 +266,7 @@
         }]
     },
     "SI": {
+        "color": "white",
         "index-entry-number": "165",
         "entry-number": "165",
         "entry-timestamp": "2016-04-05T13:23:05Z",
@@ -259,6 +280,7 @@
         }]
     },
     "SK": {
+        "color": "black",
         "index-entry-number": "164",
         "entry-number": "164",
         "entry-timestamp": "2016-04-05T13:23:05Z",
@@ -272,6 +294,7 @@
         }]
     },
     "SL": {
+        "color": "red",
         "index-entry-number": "162",
         "entry-number": "162",
         "entry-timestamp": "2016-04-05T13:23:05Z",
@@ -284,6 +307,7 @@
         }]
     },
     "SM": {
+        "color": "white",
         "index-entry-number": "156",
         "entry-number": "156",
         "entry-timestamp": "2016-04-05T13:23:05Z",
@@ -296,6 +320,7 @@
         }]
     },
     "SN": {
+        "color": "white",
         "index-entry-number": "159",
         "entry-number": "159",
         "entry-timestamp": "2016-04-05T13:23:05Z",
@@ -308,6 +333,7 @@
         }]
     },
     "SO": {
+        "color": "black",
         "index-entry-number": "167",
         "entry-number": "167",
         "entry-timestamp": "2016-04-05T13:23:05Z",
@@ -320,6 +346,7 @@
         }]
     },
     "SR": {
+        "color": "red",
         "index-entry-number": "173",
         "entry-number": "173",
         "entry-timestamp": "2016-04-05T13:23:05Z",
@@ -333,6 +360,7 @@
         }]
     },
     "SS": {
+        "color": "white",
         "index-entry-number": "169",
         "entry-number": "169",
         "entry-timestamp": "2016-04-05T13:23:05Z",
@@ -346,6 +374,7 @@
         }]
     },
     "ST": {
+        "color": "white",
         "index-entry-number": "157",
         "entry-number": "157",
         "entry-timestamp": "2016-04-05T13:23:05Z",
@@ -359,6 +388,7 @@
         }]
     },
     "KN": {
+        "color": "black",
         "index-entry-number": "152",
         "entry-number": "152",
         "entry-timestamp": "2016-04-05T13:23:05Z",
@@ -372,6 +402,7 @@
         }]
     },
     "CH": {
+        "color": "red",
         "index-entry-number": "176",
         "entry-number": "176",
         "entry-timestamp": "2016-04-05T13:23:05Z",
@@ -384,6 +415,7 @@
         }]
     },
     "SY": {
+        "color": "white",
         "index-entry-number": "177",
         "entry-number": "177",
         "entry-timestamp": "2016-04-05T13:23:05Z",
@@ -396,6 +428,7 @@
         }]
     },
     "SZ": {
+        "color": "white",
         "index-entry-number": "174",
         "entry-number": "174",
         "entry-timestamp": "2016-04-05T13:23:05Z",
@@ -408,6 +441,7 @@
         }]
     },
     "TG": {
+        "color": "black",
         "index-entry-number": "181",
         "entry-number": "181",
         "entry-timestamp": "2016-04-05T13:23:05Z",
@@ -420,6 +454,7 @@
         }]
     },
     "TH": {
+        "color": "red",
         "index-entry-number": "180",
         "entry-number": "180",
         "entry-timestamp": "2016-04-05T13:23:05Z",
@@ -432,6 +467,7 @@
         }]
     },
     "TJ": {
+        "color": "white",
         "index-entry-number": "178",
         "entry-number": "178",
         "entry-timestamp": "2016-04-05T13:23:05Z",
@@ -445,6 +481,7 @@
         }]
     },
     "LB": {
+        "color": "white",
         "index-entry-number": "104",
         "entry-number": "104",
         "entry-timestamp": "2016-04-05T13:23:05Z",
@@ -457,6 +494,7 @@
         }]
     },
     "CZ": {
+        "color": "black",
         "index-entry-number": "205",
         "entry-number": "205",
         "entry-timestamp": "2016-11-11T16:25:07Z",
@@ -470,6 +508,7 @@
         }]
     },
     "LC": {
+        "color": "red",
         "index-entry-number": "153",
         "entry-number": "153",
         "entry-timestamp": "2016-04-05T13:23:05Z",
@@ -483,6 +522,7 @@
         }]
     },
     "TM": {
+        "color": "white",
         "index-entry-number": "186",
         "entry-number": "186",
         "entry-timestamp": "2016-04-05T13:23:05Z",
@@ -496,6 +536,7 @@
         }]
     },
     "TN": {
+        "color": "black",
         "index-entry-number": "184",
         "entry-number": "184",
         "entry-timestamp": "2016-04-05T13:23:05Z",
@@ -508,6 +549,7 @@
         }]
     },
     "TO": {
+        "color": "white",
         "index-entry-number": "182",
         "entry-number": "182",
         "entry-timestamp": "2016-04-05T13:23:05Z",
@@ -520,6 +562,7 @@
         }]
     },
     "LI": {
+        "color": "white",
         "index-entry-number": "108",
         "entry-number": "108",
         "entry-timestamp": "2016-04-05T13:23:05Z",
@@ -532,6 +575,7 @@
         }]
     },
     "TR": {
+        "color": "black",
         "index-entry-number": "185",
         "entry-number": "185",
         "entry-timestamp": "2016-04-05T13:23:05Z",
@@ -544,6 +588,7 @@
         }]
     },
     "LK": {
+        "color": "red",
         "index-entry-number": "171",
         "entry-number": "171",
         "entry-timestamp": "2016-04-05T13:23:05Z",
@@ -556,6 +601,7 @@
         }]
     },
     "TT": {
+        "color": "white",
         "index-entry-number": "183",
         "entry-number": "183",
         "entry-timestamp": "2016-04-05T13:23:05Z",
@@ -568,6 +614,7 @@
         }]
     },
     "TV": {
+        "color": "white",
         "index-entry-number": "187",
         "entry-number": "187",
         "entry-timestamp": "2016-04-05T13:23:05Z",
@@ -581,6 +628,7 @@
         }]
     },
     "TZ": {
+        "color": "black",
         "index-entry-number": "179",
         "entry-number": "179",
         "entry-timestamp": "2016-04-05T13:23:05Z",
@@ -593,6 +641,7 @@
         }]
     },
     "LR": {
+        "color": "red",
         "index-entry-number": "106",
         "entry-number": "106",
         "entry-timestamp": "2016-04-05T13:23:05Z",
@@ -605,6 +654,7 @@
         }]
     },
     "LS": {
+        "color": "yellow",
         "index-entry-number": "105",
         "entry-number": "105",
         "entry-timestamp": "2016-04-05T13:23:05Z",
@@ -617,6 +667,7 @@
         }]
     },
     "LT": {
+        "color": "pink",
         "index-entry-number": "109",
         "entry-number": "109",
         "entry-timestamp": "2016-04-05T13:23:05Z",
@@ -630,6 +681,7 @@
         }]
     },
     "LU": {
+        "color": "white",
         "index-entry-number": "110",
         "entry-number": "110",
         "entry-timestamp": "2016-04-05T13:23:05Z",
@@ -642,6 +694,7 @@
         }]
     },
     "UA": {
+        "color": "red",
         "index-entry-number": "189",
         "entry-number": "189",
         "entry-timestamp": "2016-04-05T13:23:05Z",
@@ -655,6 +708,7 @@
         }]
     },
     "LY": {
+        "color": "pink",
         "index-entry-number": "107",
         "entry-number": "107",
         "entry-timestamp": "2016-04-05T13:23:05Z",
@@ -667,6 +721,7 @@
         }]
     },
     "UG": {
+        "color": "white",
         "index-entry-number": "188",
         "entry-number": "188",
         "entry-timestamp": "2016-04-05T13:23:05Z",
@@ -679,6 +734,7 @@
         }]
     },
     "MA": {
+        "color": "red",
         "index-entry-number": "127",
         "entry-number": "127",
         "entry-timestamp": "2016-04-05T13:23:05Z",
@@ -691,6 +747,7 @@
         }]
     },
     "MC": {
+        "color": "pink",
         "index-entry-number": "124",
         "entry-number": "124",
         "entry-timestamp": "2016-04-05T13:23:05Z",
@@ -703,6 +760,7 @@
         }]
     },
     "MD": {
+        "color": "white",
         "index-entry-number": "123",
         "entry-number": "123",
         "entry-timestamp": "2016-04-05T13:23:05Z",
@@ -716,6 +774,7 @@
         }]
     },
     "ME": {
+        "color": "white",
         "index-entry-number": "126",
         "entry-number": "126",
         "entry-timestamp": "2016-04-05T13:23:05Z",
@@ -728,6 +787,7 @@
         }]
     },
     "MG": {
+        "color": "pink",
         "index-entry-number": "112",
         "entry-number": "112",
         "entry-timestamp": "2016-04-05T13:23:05Z",
@@ -740,6 +800,7 @@
         }]
     },
     "MH": {
+        "color": "red",
         "index-entry-number": "118",
         "entry-number": "118",
         "entry-timestamp": "2016-04-05T13:23:05Z",
@@ -753,6 +814,7 @@
         }]
     },
     "US": {
+        "color": "white",
         "index-entry-number": "191",
         "entry-number": "191",
         "entry-timestamp": "2016-04-05T13:23:05Z",
@@ -765,6 +827,7 @@
         }]
     },
     "MK": {
+        "color": "pink",
         "index-entry-number": "111",
         "entry-number": "111",
         "entry-timestamp": "2016-04-05T13:23:05Z",
@@ -778,6 +841,7 @@
         }]
     },
     "ML": {
+        "color": "white",
         "index-entry-number": "116",
         "entry-number": "116",
         "entry-timestamp": "2016-04-05T13:23:05Z",
@@ -790,6 +854,7 @@
         }]
     },
     "MN": {
+        "color": "red",
         "index-entry-number": "125",
         "entry-number": "125",
         "entry-timestamp": "2016-04-05T13:23:05Z",
@@ -802,6 +867,7 @@
         }]
     },
     "UY": {
+        "color": "white",
         "index-entry-number": "192",
         "entry-number": "192",
         "entry-timestamp": "2016-04-05T13:23:05Z",
@@ -814,6 +880,7 @@
         }]
     },
     "UZ": {
+        "color": "pink",
         "index-entry-number": "193",
         "entry-number": "193",
         "entry-timestamp": "2016-04-05T13:23:05Z",
@@ -827,6 +894,7 @@
         }]
     },
     "MR": {
+        "color": "red",
         "index-entry-number": "119",
         "entry-number": "119",
         "entry-timestamp": "2016-04-05T13:23:05Z",
@@ -839,6 +907,7 @@
         }]
     },
     "MT": {
+        "color": "grey",
         "index-entry-number": "117",
         "entry-number": "117",
         "entry-timestamp": "2016-04-05T13:23:05Z",
@@ -851,6 +920,7 @@
         }]
     },
     "MU": {
+        "color": "red",
         "index-entry-number": "120",
         "entry-number": "120",
         "entry-timestamp": "2016-04-05T13:23:05Z",
@@ -863,6 +933,7 @@
         }]
     },
     "MV": {
+        "color": "pink",
         "index-entry-number": "115",
         "entry-number": "115",
         "entry-timestamp": "2016-04-05T13:23:05Z",
@@ -875,6 +946,7 @@
         }]
     },
     "MW": {
+        "color": "grey",
         "index-entry-number": "113",
         "entry-number": "113",
         "entry-timestamp": "2016-04-05T13:23:05Z",
@@ -887,6 +959,7 @@
         }]
     },
     "VA": {
+        "color": "red",
         "index-entry-number": "204",
         "entry-number": "204",
         "entry-timestamp": "2016-04-05T13:23:05Z",
@@ -899,6 +972,7 @@
         }]
     },
     "MX": {
+        "color": "yellow",
         "index-entry-number": "121",
         "entry-number": "121",
         "entry-timestamp": "2016-04-05T13:23:05Z",
@@ -911,6 +985,7 @@
         }]
     },
     "MY": {
+        "color": "pink",
         "index-entry-number": "114",
         "entry-number": "114",
         "entry-timestamp": "2016-04-05T13:23:05Z",
@@ -923,6 +998,7 @@
         }]
     },
     "VC": {
+        "color": "grey",
         "index-entry-number": "154",
         "entry-number": "154",
         "entry-timestamp": "2016-04-05T13:23:05Z",
@@ -936,6 +1012,7 @@
         }]
     },
     "MZ": {
+        "color": "red",
         "index-entry-number": "128",
         "entry-number": "128",
         "entry-timestamp": "2016-04-05T13:23:05Z",
@@ -949,6 +1026,7 @@
         }]
     },
     "ES": {
+        "color": "pink",
         "index-entry-number": "170",
         "entry-number": "170",
         "entry-timestamp": "2016-04-05T13:23:05Z",
@@ -961,6 +1039,7 @@
         }]
     },
     "VE": {
+        "color": "grey",
         "index-entry-number": "196",
         "entry-number": "196",
         "entry-timestamp": "2016-04-05T13:23:05Z",
@@ -973,6 +1052,7 @@
         }]
     },
     "NA": {
+        "color": "red",
         "index-entry-number": "129",
         "entry-number": "129",
         "entry-timestamp": "2016-04-05T13:23:05Z",
@@ -986,6 +1066,7 @@
         }]
     },
     "NE": {
+        "color": "pink",
         "index-entry-number": "135",
         "entry-number": "135",
         "entry-timestamp": "2016-04-05T13:23:05Z",
@@ -998,6 +1079,7 @@
         }]
     },
     "VN": {
+        "color": "grey",
         "index-entry-number": "197",
         "entry-number": "197",
         "entry-timestamp": "2016-04-05T13:23:05Z",
@@ -1010,6 +1092,7 @@
         }]
     },
     "NG": {
+        "color": "red",
         "index-entry-number": "136",
         "entry-number": "136",
         "entry-timestamp": "2016-04-05T13:23:05Z",
@@ -1022,6 +1105,7 @@
         }]
     },
     "NI": {
+        "color": "pink",
         "index-entry-number": "134",
         "entry-number": "134",
         "entry-timestamp": "2016-04-05T13:23:05Z",
@@ -1034,6 +1118,7 @@
         }]
     },
     "NL": {
+        "color": "black",
         "index-entry-number": "132",
         "entry-number": "132",
         "entry-timestamp": "2016-04-05T13:23:05Z",
@@ -1046,6 +1131,7 @@
         }]
     },
     "VU": {
+        "color": "pink",
         "index-entry-number": "194",
         "entry-number": "194",
         "entry-timestamp": "2016-04-05T13:23:05Z",
@@ -1059,6 +1145,7 @@
         }]
     },
     "NO": {
+        "color": "black",
         "index-entry-number": "137",
         "entry-number": "137",
         "entry-timestamp": "2016-04-05T13:23:05Z",
@@ -1071,6 +1158,7 @@
         }]
     },
     "NP": {
+        "color": "grey",
         "index-entry-number": "131",
         "entry-number": "131",
         "entry-timestamp": "2016-04-05T13:23:05Z",
@@ -1083,6 +1171,7 @@
         }]
     },
     "NR": {
+        "color": "blue",
         "index-entry-number": "130",
         "entry-number": "130",
         "entry-timestamp": "2016-04-05T13:23:05Z",
@@ -1095,6 +1184,7 @@
         }]
     },
     "FM": {
+        "color": "black",
         "index-entry-number": "122",
         "entry-number": "122",
         "entry-timestamp": "2016-04-05T13:23:05Z",
@@ -1108,6 +1198,7 @@
         }]
     },
     "NZ": {
+        "color": "red",
         "index-entry-number": "133",
         "entry-number": "133",
         "entry-timestamp": "2016-04-05T13:23:05Z",
@@ -1120,6 +1211,7 @@
         }]
     },
     "WS": {
+        "color": "blue",
         "index-entry-number": "155",
         "entry-number": "155",
         "entry-timestamp": "2016-04-05T13:23:05Z",
@@ -1132,6 +1224,7 @@
         }]
     },
     "OM": {
+        "color": "pink",
         "index-entry-number": "138",
         "entry-number": "138",
         "entry-timestamp": "2016-04-05T13:23:05Z",
@@ -1144,6 +1237,7 @@
         }]
     },
     "GM": {
+        "color": "red",
         "index-entry-number": "206",
         "entry-number": "206",
         "entry-timestamp": "2017-03-29T14:22:30Z",
@@ -1156,6 +1250,7 @@
         }]
     },
     "PA": {
+        "color": "blue",
         "index-entry-number": "141",
         "entry-number": "141",
         "entry-timestamp": "2016-04-05T13:23:05Z",
@@ -1168,6 +1263,7 @@
         }]
     },
     "PE": {
+        "color": "black",
         "index-entry-number": "144",
         "entry-number": "144",
         "entry-timestamp": "2016-04-05T13:23:05Z",
@@ -1180,6 +1276,7 @@
         }]
     },
     "PG": {
+        "color": "red",
         "index-entry-number": "142",
         "entry-number": "142",
         "entry-timestamp": "2016-04-05T13:23:05Z",
@@ -1193,6 +1290,7 @@
         }]
     },
     "PH": {
+        "color": "pink",
         "index-entry-number": "145",
         "entry-number": "145",
         "entry-timestamp": "2016-04-05T13:23:05Z",
@@ -1205,6 +1303,7 @@
         }]
     },
     "PK": {
+        "color": "blue",
         "index-entry-number": "139",
         "entry-number": "139",
         "entry-timestamp": "2016-04-05T13:23:05Z",
@@ -1217,6 +1316,7 @@
         }]
     },
     "PL": {
+        "color": "red",
         "index-entry-number": "146",
         "entry-number": "146",
         "entry-timestamp": "2016-04-05T13:23:05Z",

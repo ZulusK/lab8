@@ -7,13 +7,14 @@
 using namespace std;
 
 Country::Country(const std::string &name, const std::string &officialName, const std::string &abbr,
-                 const std::string &citizen, int id) {
+                 const std::string &citizen, const std::string &color, int id) {
     jsn = json_object();
     setName(name);
     setOfficialName(officialName);
     setAbbr(abbr);
     setCitizen(citizen);
     setId(id);
+    setColor(color);
 }
 
 const std::string &Country::getName() const {
@@ -86,13 +87,26 @@ json_t *Country::json() {
 Country *Country::load(json_t *jobject) {
     Country *c = NULL;
     int id = atoi(json_string_value(json_object_get(jobject, "entry-number")));
+    string color = json_string_value(json_object_get(jobject, "color"));
     auto jitem = json_array_get(json_object_get(jobject, "item"), 0);
     if (jitem) {
         string name(json_string_value(json_object_get(jitem, "name")));
         string offName(json_string_value(json_object_get(jitem, "official-name")));
         string citizen(json_string_value(json_object_get(jitem, "citizen-names")));
         string abbr(json_string_value(json_object_get(jitem, "country")));
-        c = new Country(name, offName, abbr, citizen, id);
+        c = new Country(name, offName, abbr, citizen, color, id);
     }
     return c;
+}
+
+const string &Country::getColor() const {
+    return color;
+}
+
+void Country::setColor(const string &color) {
+    auto jrm = json_object_get(jsn, "color");
+    if (!json_is_null(jrm))
+        json_decref(jrm);
+    json_object_set_new(jsn, "color", json_string(color.c_str()));
+    Country::color = color;
 }

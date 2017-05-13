@@ -72,10 +72,17 @@ bool abbrFilter(Country *c, void *key) {
     return c->getAbbr().compare(*(string *) key) == 0;
 }
 
+bool colorFilter(Country *c, void *key) {
+    return c->getColor().compare(*(string *) key) == 0;
+}
+
 bool idFilter(Country *c, void *key) {
     return c->getId() == stoi(*(string *) key);
 }
 
+bool positiveFilter(Country *c, void *key) {
+    return true;
+}
 
 string CounriesStorage::get(bool(*isValid)(Country *c, void *key), const string &key) {
     auto jarr = json_array();
@@ -103,7 +110,11 @@ string CounriesStorage::get(const string &key, const string &value) {
         return get(abbrFilter, value);
     } else if (key.compare("id") == 0) {
         return get(idFilter, value);
-    } else return "";
+    } else if (key.compare("color") == 0) {
+        return get(colorFilter, value);
+    } else {
+        return get(positiveFilter, value);
+    }
 }
 
 CounriesStorage::~CounriesStorage() {
@@ -115,4 +126,8 @@ CounriesStorage::~CounriesStorage() {
 
 int CounriesStorage::size() {
     return items.size();
+}
+
+string CounriesStorage::get(int id) {
+    return get(idFilter, to_string(id));
 }

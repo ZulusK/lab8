@@ -10,6 +10,7 @@
 
 class Country {
     std::string name;
+    std::string color;
     std::string officialName;
     std::string abbr;
     std::string citizen;
@@ -17,7 +18,7 @@ class Country {
     json_t *jsn;
 public:
     Country(const std::string &name, const std::string &officialName, const std::string &abbr,
-            const std::string &citizen, int id = 0);
+            const std::string &citizen, const std::string &color, int id = 0);
 
     ~Country();
 
@@ -28,6 +29,10 @@ public:
     const std::string &getOfficialName() const;
 
     void setOfficialName(const std::string &officialName);
+
+    const std::string &getColor() const;
+
+    void setColor(const std::string &color);
 
     const std::string &getAbbr() const;
 

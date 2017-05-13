@@ -110,6 +110,10 @@ public:
     std::string getErrorByCode(int code);
 
     bool isValidCharacter(char c);
+
+    std::string info();
+
+    std::string getItems(const std::string &path);
 };
 
 

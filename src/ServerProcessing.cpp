@@ -126,7 +126,7 @@ string Server::getErrorByCode(int code) {
 }
 
 bool Server::isValidCharacter(char c) {
-    return isalnum(c) || c == '?' || c == '!' || c == '/' || c == '+' || c == '-' || c == '.';
+    return isalnum(c) || c == '?' || c == '!' || c == '/' || c == '+' || c == '-' || c == '.' || c == '=';
 }
 
 void Server::processClientRequest(Processor *processor) {
@@ -201,9 +201,43 @@ HTTPRequest *Server::getRequest(TcpClient *client) {
     return request;
 }
 
+string Server::info() {
+    auto jobj = json_object();
+    json_object_set_new(jobj, "title", json_string(serverName.c_str()));
+    json_object_set_new(jobj, "developer", json_string(developer.c_str()));
+    json_object_set_new(jobj, "time", json_string(getDate().c_str()));
+    // create JSON document string
+    char *jsonString = json_dumps(jobj, JSON_INDENT(2));
+    string jstr(jsonString);
+    free(jsonString);
+    return jstr;
+}
+
+inline bool isInteger(const std::string &s) {
+    if (s.empty() || ((!isdigit(s[0])) && (s[0] != '-') && (s[0] != '+'))) return false;
+
+    char *p;
+    strtol(s.c_str(), &p, 10);
+
+    return (*p == 0);
+}
+
+string Server::getItems(const string &path) {
+    string key = path.substr(0, path.find('='));
+    if (key.length() + 1 >= path.length() && isInteger(key)) {
+        return storage->get(stoi(key));
+    } else if (key.length() + 1 < path.length()) {
+        string val = path.substr(path.find("=") + 1);
+        return storage->get(key, val);
+    }
+    return "";
+}
+
 string Server::get(const string &path) {
-    string answer = "";
-    return answer;
+    if (path.compare("/") == 0) return info();
+    if (path.find("/favorites?") == 0) return getItems(path.substr(11));
+    if (path.compare("/favorites") == 0) return storage->get("", "");
+    else return "";
 }
 
 HTTPResponse *Server::getResponse(HTTPRequest *request) {
@@ -212,9 +246,10 @@ HTTPResponse *Server::getResponse(HTTPRequest *request) {
     if (request->method == GET && request->path.length() > 0) {
         response->answer = get(request->path);
         //if some error detected
-        if (response->answer.length() == 0) {
+        if (response->answer.length() < 4) {
             response->status = 404;
             response->header = headerHTTP(404);
+            response->answer = "";
         } else {
             response->status = 200;
             response->header = headerHTTP(200);
@@ -228,8 +263,10 @@ HTTPResponse *Server::getResponse(HTTPRequest *request) {
 }
 
 void Server::sendResponse(HTTPResponse *response) {
-    string message = response->header + HHEND + response->answer;
-    sendString(response->client, message);
+    string message = response->header+"Connection: Closed" + HHEND + response->answer;
+    if (message.length() < MAX_RESPONSE_LEN) {
+        sendString(response->client, message);
+    }
 }
 
 int Server::getMethod(const string &request) {

@@ -32,6 +32,8 @@ public:
 
 
     int size();
+
+    std::string get(int id);
 };
 
 

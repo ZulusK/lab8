@@ -20,15 +20,15 @@ Create a TCP-server that listens TCP connection requests of customers and intera
 }
 ```
 
-* ``/ Favorites`` - JSON-list of objects that represent a list of your favorite countries. Each facility must have several fields, among which must be numeric field with a unique id for each object value.
+* ``/favorites`` - JSON-list of objects that represent a list of your favorite countries. Each facility must have several fields, among which must be numeric field with a unique id for each object value.
 
-* ``/ Favorites? {Key} = {value}`` - JSON-list those objects from the list ``/ favorites``, whose field ``{key}`` matter ``{value}``. Key ``{key}``, in which the filtering list, choose randomly.
+* ``/favorites? {key} = {value}`` - JSON-list those objects from the list ``/ favorites``, whose field ``{key}`` matter ``{value}``. Key ``{key}``, in which the filtering list, choose randomly.
 
-* ``/ Favorites / {id}`` - JSON-object in the list ``/ favorites`` for numerical identifier value ``{id}``. If an object id values have not been found to return in response to HTTP Status 404 Not Found.
+* ``/favorites / {id}`` - JSON-object in the list ``/ favorites`` for numerical identifier value ``{id}``. If an object id values have not been found to return in response to HTTP Status 404 Not Found.
 
-* ``/ File`` - read the contents of the file data.txt, which previously placed in the directory data / project. Send client JSON-object that contains the name, size (in bytes) and text file content.
+* ``/file`` - read the contents of the file data.txt, which previously placed in the directory data / project. Send client JSON-object that contains the name, size (in bytes) and text file content.
 
-* ``/ File / data`` - in response to the client to send JSON-object with information about the number of digits in the file and the largest number (file data.txt).
+* ``/file / data`` - in response to the client to send JSON-object with information about the number of digits in the file and the largest number (file data.txt).
 
 #### 2. Create project documentation using Doxygen
 
