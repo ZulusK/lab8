@@ -133,7 +133,7 @@ bool Server::isValidCharacter(char c) {
 
 void Server::processClientRequest(Session *processor) {
     processor->alive.lock();
-    cout << "Connection  success [" << processor->id << "]" << endl;
+    cout << "....=>Connection  success [" << processor->id << "]" << endl;
 
     HTTPRequest *request = getRequest(processor->client);
     HTTPResponse *response = getResponse(request);
@@ -141,7 +141,7 @@ void Server::processClientRequest(Session *processor) {
     delete response;
     delete request;
 
-    cout << "Response sent [" << processor->id << "]" << endl;
+    cout << "..............=>Response sent [" << processor->id << "]" << endl;
     processor->alive.unlock();
 }
 
@@ -305,38 +305,30 @@ string to_hex_string(size_t a) {
 void Server::sendChunkedResponse(HTTPResponse *response) {
 
     string header = response->header;
+//    header += HEND;
+//    header += "Transfer-Encoding: chunked";
+    header += HHEND;
+
     size_t pos = 0;
     size_t size = 0;
     do {
         string chunk;
         //get size of the next chunk
         size = min(response->answer.length() - pos + header.length(), (size_t) MAX_RESPONSE_LEN - 70) - header.length();
+        //if there no more text in response, send empty msg
         if (size == 0) {
-//            chunk = header;
+//            chunk += to_hex_string(size);
 //            chunk += HEND;
-//            chunk += "Connection: closed";
-//            chunk += HHEND;
-            chunk += to_hex_string(size);
-            chunk += HEND;
-            chunk += HEND;
+//            chunk += HEND;
         } else {
-            if (header.length() > 0) {
-                chunk = header;
-                header = "";
-                chunk += HEND;
-                chunk += "Transfer-Encoding: chunked";
-                chunk += HEND;
-                chunk += "Connection: keep-alive";
-                chunk += HHEND;
-            } else {
-                chunk = "";
-            }
-            chunk += to_hex_string(size);
-            chunk += HEND;
+            chunk = header;
+            header = "";
+//            chunk += to_hex_string(size);
+//            chunk += HEND;
             chunk += response->answer.substr(pos, size);
-            chunk += HEND;
+//            chunk += HEND;
+            pos += size;
         }
-        pos += size;
         sendString(response->client, chunk);
     } while (size != 0);
 }

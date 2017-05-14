@@ -48,7 +48,7 @@ void Server::cleanSessions() {
 }
 
 void Server::freeSession(Session *p) {
-    cout << "DELETE client [" << p->id << "]" << endl;
+    cout << "............................=>DELETE client [" << p->id << "]" << endl;
     delete p->thread;
     delete p->client;
     delete p;
@@ -174,7 +174,7 @@ void Server::sendString(TcpClient *client, const string &str) {
     NetMessage msg(MAX_RESPONSE_LEN);
     msg.setDataString(str);
     sender.lock();
-    cout << "SEND" << endl << str << endl;
+    cout << "..........=>Send" << endl << str << endl;
     try {
         client->send(msg);
     } catch (NetException e) {
